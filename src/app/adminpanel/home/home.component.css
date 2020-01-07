@@ -1,0 +1,13 @@
+.treegrid-ddtg-normal {
+  float: left;
+  margin-right: 20px;
+  width: 350px;
+  height: 300px;
+}
+.treegrid-ddtg-normal .iui-treegrid-expand-box {
+  margin-top: -3px;
+}
+.treegrid-ddtg-item-label {
+  display: inline-block;
+  padding: 2px 0;
+}

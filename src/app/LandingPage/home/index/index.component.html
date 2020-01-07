@@ -84,7 +84,7 @@
          </div>
       </section>
       <section id="UAT_onboard" class="sectionAPIs text-center">
-         <h3 class="mb30">Get <span>Onboard</span></h3>
+         <h3 class="mb30">Journey to <span>go Live</span></h3>
          <div class="row mb50">
             <div class="col-md-3 text-lg-center mb-xs-30">
                <a class="ff-bold fs16 color-black onBoardLink" data-dismiss="modal" data-toggle="modal" data-target="#signUp" (click)="already_Log(alreadylogin,signup)">
@@ -307,13 +307,16 @@
                <option value="Application Creation">Application Creation</option>
                <option value="UAT Form">UAT Form</option>
                <option value="URL Testing">URL Testing</option>
-            </select>
-            <select class="select mb25" name="Suggestion" [(ngModel)] ="Suggestion">
-               <option value="">Select</option>
                <option value="Suggestion">Suggestion</option>
                <option value="Others">Others</option>
             </select>
+            <!-- <select class="select mb25" name="Suggestion" [(ngModel)] ="Suggestion">
+               <option value="">Select</option>
+               <option value="Suggestion">Suggestion</option>
+               <option value="Others">Others</option>
+            </select> -->
             <input class="w100p mb25" name="feedback_email_address" [(ngModel)] = "feedback_email_address" type="text" placeholder="Your Email">
+            <input class="w100p mb25" name="feedback_location_name" [(ngModel)] = "feedback_location_name" type="text" placeholder="Location">
             <textarea class="w100p mb35" name="feedback_email_text" [(ngModel)] = "feedback_email_test" placeholder="Write your thoughts"></textarea>
             <div class="row">
                <a class="signInBtn marginAutoHr mb15" (click)="feedback_form_submit(signin)">Submit</a>

@@ -17,32 +17,34 @@ import { RequestsComponent } from './requests/requests.component';
 import { ApprovalComponent } from './approval/approval.component';
 import { LoginComponent } from './login/login.component';
 import { PendingRegComponent } from './pending-reg/pending-reg.component';
-
+import { HomeComponent } from './home/home.component';
+//import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
-    imports: [
-        CommonModule,
-         AdminpanelRoutingModule,
-         RouterModule,
-         ModalModule.forRoot(),
-         ToasterModule.forRoot(),
-         FormsModule,
-         ReactiveFormsModule,
-         Ng4LoadingSpinnerModule.forRoot(),
-         NgMultiSelectDropDownModule.forRoot(),
-         NgxPaginationModule,
-         Ng2SearchPipeModule,
-    ],
-    declarations: [
-        AdminpanelComponent,
-        HeaderComponent,
-        FooterComponent,
-        SidebarComponent,
-        RequestsComponent,
-        ApprovalComponent,
-        LoginComponent,
-        PendingRegComponent,  
-    ],
-
+  imports: [
+    CommonModule,
+    AdminpanelRoutingModule,
+    RouterModule,
+    ModalModule.forRoot(),
+    ToasterModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule,
+    Ng4LoadingSpinnerModule.forRoot(),
+    NgMultiSelectDropDownModule.forRoot(),
+    NgxPaginationModule,
+    Ng2SearchPipeModule,
+    //BrowserModule,
+  ],
+  declarations: [
+    AdminpanelComponent,
+    HeaderComponent,
+    FooterComponent,
+    SidebarComponent,
+    RequestsComponent,
+    ApprovalComponent,
+    LoginComponent,
+    PendingRegComponent,
+    HomeComponent,
+  ],
 })
 export class AdminpanelModule {}
