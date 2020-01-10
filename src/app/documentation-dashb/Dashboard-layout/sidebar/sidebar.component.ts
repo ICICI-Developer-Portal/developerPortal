@@ -80,8 +80,10 @@ export class SidebarComponent implements OnInit {
     Object.keys(data).forEach(async (eachKey, index) => {
       let tempObj = { menuName: eachKey, menuOrder: index };
       if (typeof data[eachKey] == 'object' && !data[eachKey].API_ID) {
+        //parent node
         tempObj['children'] = this.getMenuData(data[eachKey]);
       } else if (typeof data[eachKey] == 'object' && data[eachKey].API_ID) {
+        //child
         tempObj['API_ID'] = data[eachKey].API_ID;
       }
       tempArray.push(tempObj);
