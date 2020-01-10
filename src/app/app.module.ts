@@ -7,7 +7,7 @@ import { HomeModule } from './LandingPage/home/home.module';
 import { HttpModule } from '@angular/http';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { UserservicesModule } from './services/userservice.module';
-import { LoginService } from './services';
+import { LoginService, DashboardService } from './services';
 import { Config } from './config/config';
 import { MaindashboardModule } from './maindashboard/maindashboard.module';
 import { MailverifyModule } from './mailverify/mailverify.module';
@@ -30,13 +30,13 @@ import { AdminPortalComponent } from './admin-portal/admin-portal.component';
     HttpModule,
     UserservicesModule,
     MailverifyModule,
-    
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },
     Config,
     LoginService,
     VariablesService,
+    DashboardService,
   ],
   bootstrap: [AppComponent],
 })
