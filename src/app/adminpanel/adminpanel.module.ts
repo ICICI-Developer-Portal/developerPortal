@@ -18,7 +18,14 @@ import { ApprovalComponent } from './approval/approval.component';
 import { LoginComponent } from './login/login.component';
 import { PendingRegComponent } from './pending-reg/pending-reg.component';
 import { HomeComponent } from './home/home.component';
-//import { BrowserModule } from '@angular/platform-browser';
+import {
+  MatTreeModule,
+  MatIconModule,
+  MatCheckboxModule,
+  MatFormFieldModule,
+  MatSlideToggleModule,
+} from '@angular/material';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   imports: [
@@ -33,7 +40,12 @@ import { HomeComponent } from './home/home.component';
     NgMultiSelectDropDownModule.forRoot(),
     NgxPaginationModule,
     Ng2SearchPipeModule,
-    //BrowserModule,
+    MatTreeModule,
+    MatIconModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatSlideToggleModule,
+    DragDropModule,
   ],
   declarations: [
     AdminpanelComponent,

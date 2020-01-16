@@ -1509,7 +1509,25 @@
          <div class="row mb30">
             <div class="col-lg-12 col-md-12 mb-xs-30">
                <div><label for="contactPerson">Contact Number</label></div>
-               <input class="w100p fs12" name="contactnumber" [(ngModel)] = "Inter_contactnumber">
+               <input type='number' class="w100p fs12" name="contactnumber" [(ngModel)] = "Inter_contactnumber">
+            </div>
+         </div>
+         <div class="row mb30">
+            <div class="col-lg-12 col-md-12 mb-xs-30">
+               <div><label for="location">Location</label></div>
+               <input class="w100p fs12" name="location" [(ngModel)] = "Inter_location">
+            </div>
+         </div>
+         <div class="row mb30">
+            <div class="col-lg-12 col-md-12 mb-xs-30">
+               <div><label for="company">Company</label></div>
+               <input class="w100p fs12" name="company" [(ngModel)] = "Inter_company">
+            </div>
+         </div>
+         <div class="row mb30">
+            <div class="col-lg-12 col-md-12 mb-xs-30">
+               <div><label for="requirements">Requirements</label></div>
+               <textarea class="w100p fs12" name="requirements" [(ngModel)] = "Inter_requirements"></textarea>
             </div>
          </div>
       </form>

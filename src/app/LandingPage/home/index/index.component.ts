@@ -1147,6 +1147,8 @@ export class IndexComponent implements OnInit {
         var json = {
           email: this.feedback_email_address,
           location: this.feedback_location_name,
+          feedback: this.feedback_email_test,
+          topic: this.issues,
           feedbackIn: this.feedback_email_test + '' + this.issues,
           // "feedbackIn":this.feedback_email_test+''+this.issues+' '+this.Suggestion
         };
@@ -1170,13 +1172,44 @@ export class IndexComponent implements OnInit {
   Inter_full_name: String = '';
   Inter_email: String = '';
   Inter_contactnumber: String = '';
+  Inter_location: String = '';
+  Inter_company: String = '';
+  Inter_requirements: String = '';
+
   inter_submit() {
+    // var feedback =
+    //   'User Interested Full Name = ' +
+    //   this.Inter_full_name +
+    //   ' Contact Number =' +
+    //   this.Inter_contactnumber;
+    // var json = { email: this.Inter_email, feedbackIn: feedback };
+    // this.adm.feedback(json).subscribe((data: any) => {
+    //   var obj = JSON.parse(data._body);
+    //   if (obj.status == true) {
+    //     this.toastrmsg('success', 'Thank your for your Request.');
+    //     this.Inter_full_name = '';
+    //     this.Inter_contactnumber = '';
+    //     this.Inter_email = '';
+    //     this.modalRef.hide();
+    //   } else {
+    //     this.toastrmsg('error', obj.message);
+    //   }
+    // });
     var feedback =
       'User Interested Full Name = ' +
       this.Inter_full_name +
       ' Contact Number =' +
       this.Inter_contactnumber;
-    var json = { email: this.Inter_email, feedbackIn: feedback };
+    var json = {
+      fullName: this.Inter_full_name,
+      email: this.Inter_email,
+      mobile: this.Inter_contactnumber,
+      location: this.Inter_location,
+      company: this.Inter_company,
+      requirements: this.Inter_requirements,
+      feedbackIn: feedback,
+    };
+    console.log('josn', json);
     this.adm.feedback(json).subscribe((data: any) => {
       var obj = JSON.parse(data._body);
       if (obj.status == true) {
@@ -1184,6 +1217,9 @@ export class IndexComponent implements OnInit {
         this.Inter_full_name = '';
         this.Inter_contactnumber = '';
         this.Inter_email = '';
+        this.Inter_location = '';
+        this.Inter_company = '';
+        this.Inter_requirements = '';
         this.modalRef.hide();
       } else {
         this.toastrmsg('error', obj.message);
