@@ -12,6 +12,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 declare var showProdTabEnv: any; // just change here from arun answer.
 declare var openProdCurrentTabEnv: any;
 import { formatDate } from '@angular/common';
+import { CONSTANTS } from 'config/application-constant';
+import { PATTERNS } from 'config/regex-pattern';
 
 @Component({
   selector: 'app-index',
@@ -105,6 +107,11 @@ export class IndexComponent implements OnInit {
   JiraIdnew: any;
   active: string;
   collection: any;
+
+  accountNumErrorMsg: string = '';
+  ipAddressErrorMsg: string = '';
+  portNumErrorMsg: string = '';
+  urlErrorMsg: string = '';
 
   constructor(
     private HttpClient: HttpClient,
@@ -713,26 +720,30 @@ export class IndexComponent implements OnInit {
 
   /****** To Unselect group ******/
   onGroupSelect(items) {
-    sessionStorage.setItem('1105', 'false');
-    sessionStorage.setItem('1106', 'false');
-    sessionStorage.setItem('1107', 'false');
-    this.Cms_allShow = false;
-    this.Webservice_Show = false;
-    this.Ecollection_Show = false;
+    if (items.category == CONSTANTS.CMS_COLLECTION) {
+      sessionStorage.setItem('1105', 'false');
+      sessionStorage.setItem('1106', 'false');
+      sessionStorage.setItem('1107', 'false');
+      this.Cms_allShow = false;
+      this.Webservice_Show = false;
+      this.Ecollection_Show = false;
+    }
   }
 
   /****** To select group ******/
   onGroupDeSelect(items) {
-    sessionStorage.setItem('1105', 'true');
-    sessionStorage.setItem('1106', 'true');
-    sessionStorage.setItem('1107', 'true');
-    this.Cms_allShow = true;
-    this.Webservice_Show = true;
-    this.Ecollection_Show = true;
+    if (items.category == CONSTANTS.CMS_COLLECTION) {
+      sessionStorage.setItem('1105', 'true');
+      sessionStorage.setItem('1106', 'true');
+      sessionStorage.setItem('1107', 'true');
+      this.Cms_allShow = true;
+      this.Webservice_Show = true;
+      this.Ecollection_Show = true;
+    }
   }
 
   onSelectAll(items: any) {
-    if (items.category == 'CMS Collection') {
+    if (items.category == CONSTANTS.CMS_COLLECTION) {
       this.Cms_allShow = true;
       this.Webservice_Show = true;
       this.Ecollection_Show = true;
@@ -747,7 +758,7 @@ export class IndexComponent implements OnInit {
     // }
   }
   onDeSelectAll(items: any) {
-    if (items.category == 'CMS Collection') {
+    if (items.category == CONSTANTS.CMS_COLLECTION) {
       this.Cms_allShow = false;
       this.Webservice_Show = false;
       this.Ecollection_Show = false;
@@ -1236,4 +1247,70 @@ export class IndexComponent implements OnInit {
     this.showTab = id;
     //this.active ='#F06321';
   }
+
+  onChangeAccountNum(event) {
+    let result;
+    let patt = PATTERNS.REGEX_NUMBERS;
+    if (event === '') {
+      this.accountNumErrorMsg = '';
+    } else {
+      result = patt.test(event);
+      if (result === false) {
+        this.accountNumErrorMsg = CONSTANTS.NUMERIC_VAL;
+      } else {
+        this.accountNumErrorMsg = '';
+      }
+      return result;
+    }
+  }
+
+  onChangeIpAddress(event) {
+    let result;
+    let pattern = PATTERNS.REGEX_IP;
+    if (event === '') {
+      this.ipAddressErrorMsg = '';
+    } else {
+      result = pattern.test(event);
+      if (result === false) {
+        this.ipAddressErrorMsg = CONSTANTS.IP_ADDRESS;
+      } else {
+        this.ipAddressErrorMsg = '';
+      }
+      return result;
+    }
+  }
+
+  onChangePort(event) {
+    let result;
+    let pattern = PATTERNS.REGEX_PORT;
+
+    if (event === '') {
+      this.portNumErrorMsg = '';
+    } else {
+      result = pattern.test(event);
+      if (result === false) {
+        this.portNumErrorMsg = CONSTANTS.PORT_ADDRESS;
+      } else {
+        this.portNumErrorMsg = '';
+      }
+      return result;
+    }
+  }
+
+  onChangeURL(event) {
+    let result;
+    let pattern = PATTERNS.REGEX_URL;
+    if (event === '') {
+      this.urlErrorMsg = '';
+    } else {
+      result = pattern.test(event);
+      if (result === false) {
+        this.urlErrorMsg = CONSTANTS.URL;
+      } else {
+        this.urlErrorMsg = '';
+      }
+      return result;
+    }
+  }
+
 }
