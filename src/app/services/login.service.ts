@@ -565,4 +565,18 @@ export class LoginService {
     let options = new RequestOptions({ headers: headers });
     return this.http.post(this.apiUrl + 'has-admin-access', query, options);
   }
+  downloadCertificate(filePath) {
+    console.log('login service', filePath);
+    var query = filePath;
+    let headers = new Headers({
+      'Content-Type': 'application/x-www-form-urlencoded',
+    });
+
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(
+      'https://developer.icicibank.com/' + 'download',
+      query,
+      options,
+    );
+  }
 }

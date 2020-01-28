@@ -14,6 +14,7 @@ declare var openProdCurrentTabEnv: any;
 import { formatDate } from '@angular/common';
 import { CONSTANTS } from 'config/application-constant';
 import { PATTERNS } from 'config/regex-pattern';
+import { DashboardService } from 'src/app/services/dashboard.service';
 
 @Component({
   selector: 'app-index',
@@ -122,6 +123,7 @@ export class IndexComponent implements OnInit {
     private router: Router,
     private adm: LoginService,
     private toasterService: ToasterService,
+    private dashboardService: DashboardService,
   ) {
     this.objOnB = this.objOnBoarding.getonBoarding();
     this.Hide_signbtn();
@@ -656,9 +658,13 @@ export class IndexComponent implements OnInit {
   }
 
   callSubdomain(value) {
+    console.log('doamin name', value);
+
     if (value != '') {
       this.adm.domain_and_apis().subscribe((data: any) => {
+        console.log('get treedata', data);
         var obj = JSON.parse(data._body);
+        console.log('obj', obj);
         var subdomain = [];
         for (var i in obj) {
           if (obj[i].domain == value) {
@@ -669,10 +675,12 @@ export class IndexComponent implements OnInit {
         }
         this.drpHide = true;
         let dt = [];
+
         this.subdomainlst = subdomain;
         console.log(this.subdomainlst);
         for (let j in this.subdomainlst) {
           let d = this.subdomainlst[j];
+          console.log('d', d);
           for (let k in d['api']) {
             dt.push({
               id: d['api'][k]['ApiId'],
@@ -683,7 +691,7 @@ export class IndexComponent implements OnInit {
         }
         this.objOnB.txtSubDomain = [];
         this.itemList = dt;
-        //console.log(this.itemList)
+        console.log(this.itemList);
       });
     } else {
       this.drpHide = false;
@@ -964,15 +972,39 @@ export class IndexComponent implements OnInit {
     formData.append('callbackUrl', inputFields['callbackUrl']);
     console.log(formData);
     let a: any = (<HTMLInputElement>document.getElementById('file1')).files;
+    console.log('a', a);
     for (let k = 0; k < a.length; k++) {
       formData.append('file1', a[k]);
     }
+
+    //Jira Service
     this.HttpClient.post<any>(
       'https://developerapi.icicibank.com:8443/api/v2/jira',
       formData,
     ).subscribe(
       res => {
         console.log(res);
+        if (res.success === 'true') {
+          //File upload service
+          var formData = new FormData();
+          let b: any = (<HTMLInputElement>document.getElementById('file1'))
+            .files;
+          for (let k = 0; k < b.length; k++) {
+            formData.append(res.jiraId, b[k]);
+          }
+          this.HttpClient.post<any>(
+            'https://developer.icicibank.com/fileUpload',
+            formData,
+          ).subscribe(
+            res => {
+              console.log(res);
+            },
+            err => {
+              console.log('err', err);
+              console.log('err headers', err.headers);
+            },
+          );
+        }
         this.modalRef = this.modalService.show(UATconfirm, {
           backdrop: 'static',
         });
@@ -1032,6 +1064,7 @@ export class IndexComponent implements OnInit {
     );
 
     let options = {
+      method: 'POST',
       headers: new HttpHeaders().set(
         'Content-Type',
         'application/x-www-form-urlencoded',
@@ -1312,5 +1345,4 @@ export class IndexComponent implements OnInit {
       return result;
     }
   }
-
 }

@@ -16,6 +16,7 @@ import { DocumentationDashbComponent } from './documentation-dashb/documentation
 import { DocumentationDashbModule } from './documentation-dashb/documentation-dashb.module';
 import { VariablesService } from './services/Variables.service';
 import { AdminPortalComponent } from './admin-portal/admin-portal.component';
+import { DownloadPdfServiceComponent } from './LandingPage/downloadPdfService.component';
 
 @NgModule({
   declarations: [AppComponent, AdminPortalComponent],
@@ -37,6 +38,7 @@ import { AdminPortalComponent } from './admin-portal/admin-portal.component';
     LoginService,
     VariablesService,
     DashboardService,
+    DownloadPdfServiceComponent,
   ],
   bootstrap: [AppComponent],
 })

@@ -447,6 +447,7 @@ input:focus {
   background: #ffffff;
   border: 1px solid #004a7f;
   color: #004a7f !important;
+  margin-right: 10px;
 }
 .signInBtn {
   background: #ae282e;

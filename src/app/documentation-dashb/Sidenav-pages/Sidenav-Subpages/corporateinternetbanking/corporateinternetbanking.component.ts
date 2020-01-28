@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DownloadPdfServiceComponent } from '../../../../LandingPage/downloadPdfService.component';
+import { CONSTANTS } from '../../../../../../config/application-constant';
 
 @Component({
   selector: 'app-corporateinternetbanking',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   //styleUrls: ['./corporateinternetbanking.component.css']
 })
 export class CorporateinternetbankingComponent implements OnInit {
+  constructor(public downloadAsPdfService: DownloadPdfServiceComponent) {}
+  constants = CONSTANTS;
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  openAsPdfDoc() {
+    var imgPath = document.getElementById('img_id').getAttribute('src');
+    this.downloadAsPdfService.openAsPdfDoc(imgPath);
   }
-
 }
