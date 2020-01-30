@@ -21,4 +21,12 @@ export class DownloadPdfServiceComponent {
     doc.save(fileName + '.' + 'pdf');
     //doc.output('dataurlnewwindow');
   }
+
+  openDocAsPdfDoc(docPath) {
+    // var fileNameIndex = docPath.substring(docPath.lastIndexOf('/') + 1);
+    // var fileName = fileNameIndex.substr(0, fileNameIndex.lastIndexOf('.'));
+    // var doc = new jsPDF();
+    // doc.text(docPath, 10, 10);
+    // doc.save(fileName + '.' + 'pdf');
+  }
 }

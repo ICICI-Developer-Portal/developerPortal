@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CONSTANTS } from '../../../../../../config/application-constant';
 
 @Component({
   selector: 'app-utility-payments',
@@ -6,10 +7,8 @@ import { Component, OnInit } from '@angular/core';
   //styleUrls: ['./utility-payments.component.css']
 })
 export class UtilityPaymentsComponent implements OnInit {
+  constructor() {}
+  constants = CONSTANTS;
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

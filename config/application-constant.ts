@@ -4,7 +4,7 @@ export const CONSTANTS = {
   IP_ADDRESS: "Enter a valid IP Address",
   PORT_ADDRESS: "Enter a valid Port Address",
   URL: "Enter a valid URL",
-  PDF_DOCUMENT: "PDF Document",
+  PDF_DOCUMENT: "Document",
   VIEW_FLOW: "View Flow",
   PDF_TITLE: "Document"
 };
