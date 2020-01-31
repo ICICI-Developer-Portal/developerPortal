@@ -467,3 +467,25 @@ a:hover {
 .workImageContainer h2 {
   text-align: -webkit-center;
 }
+
+.loginsuccess-modal-border {
+  border: none;
+}
+.success-label-div {
+  justify-content: center;
+}
+.success-label {
+  font-size: 25px;
+  color: #ae282e;
+  font-weight: bold;
+}
+.modal-footer-border {
+  border: none;
+}
+.ok-btn-div {
+  display: flex;
+  justify-content: center;
+}
+.ok-btn {
+  width: 50%;
+}

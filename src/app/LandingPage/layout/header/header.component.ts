@@ -20,6 +20,7 @@ export class HeaderComponent implements OnInit {
   modalRef: BsModalRef;
   modalRef2: BsModalRef;
   modalRef3: BsModalRef;
+  modalRef4: BsModalRef;
   isusername: boolean = false;
   issetpwd: boolean = false;
   is_res_error: any = '';
@@ -48,6 +49,7 @@ export class HeaderComponent implements OnInit {
   user_name = '';
   otp_verified = 0;
   domainLst: any[];
+  loginResponse: any;
   constructor(
     private SessionService: SessionService,
     private authService: AuthService,
@@ -205,7 +207,7 @@ export class HeaderComponent implements OnInit {
   }
 
   // Login function
-  Login(username: any, password: any) {
+  Login(username: any, password: any, loginsuccess: TemplateRef<any>) {
     //localStorage.setItem('username',username);
     //localStorage.setItem('password',password);
     this.isusername = false;
@@ -222,22 +224,25 @@ export class HeaderComponent implements OnInit {
     var json = { username: username, password: password };
     this.spinnerService.show();
     this.adm.Login(json).subscribe((data: any) => {
+      console.log('data body');
+      console.log(data._body);
       var response = data._body;
-      var obj = JSON.parse(response);
-      if (obj.status == true) {
+      this.loginResponse = JSON.parse(response);
+      console.log(this.loginResponse);
+      if (this.loginResponse.status == true) {
         var timer = this.SessionService.session();
         this.show = false;
         this.modalRef.hide();
         //this.toastrmsg('success', "Login has been Successfully");
-        this.sessionSet('username', obj.data.username);
-        localStorage.setItem('username', obj.data.username);
-        localStorage.setItem('password', obj.data.password);
-        localStorage.setItem('id', obj.data.id);
-        localStorage.setItem('role', 'user');
-        localStorage.setItem('email', obj.data.email);
-        this.adm.sendUserId(obj.data.id);
+        // this.sessionSet('username', obj.data.username);
+        // localStorage.setItem('username', obj.data.username);
+        // localStorage.setItem('password', obj.data.password);
+        // localStorage.setItem('id', obj.data.id);
+        // localStorage.setItem('role', 'user');
+        // localStorage.setItem('email', obj.data.email);
+        // this.adm.sendUserId(obj.data.id);
         this.spinnerService.hide();
-        //this.router.navigate(['/documentation']);
+
         this.adm.LoginPortal(json).subscribe(
           res => {
             this.router.navigate(['/index']);
@@ -246,11 +251,14 @@ export class HeaderComponent implements OnInit {
             this.router.navigate(['/index']);
           },
         );
+        this.modalRef4 = this.modalService.show(loginsuccess, {
+          backdrop: 'static',
+        });
       } else {
         this.spinnerService.hide();
         this.isusername = false;
         this.issetpwd = false;
-        this.is_res_error = obj.message;
+        this.is_res_error = this.loginResponse.message;
       }
     });
   }
@@ -513,8 +521,6 @@ export class HeaderComponent implements OnInit {
         });
       }
     } catch {}
-
-    //alert(Email);
   }
 
   btn_Sign() {
@@ -534,7 +540,6 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem('id');
     localStorage.removeItem('role');
 
-    //alert('a');
     this.adm.sendUserId('');
     this.showbtn = true;
     this.showlogoutbtn = false;
@@ -578,5 +583,22 @@ export class HeaderComponent implements OnInit {
     setTimeout(function() {
       document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
     }, 10);
+  }
+
+  //login success pop up modal
+  clickOk() {
+    this.modalRef4.hide();
+    this.sessionSet('username', this.loginResponse.data.username);
+    localStorage.setItem('username', this.loginResponse.data.username);
+    localStorage.setItem('password', this.loginResponse.data.password);
+    localStorage.setItem('id', this.loginResponse.data.id);
+    localStorage.setItem('role', 'user');
+    localStorage.setItem('email', this.loginResponse.data.email);
+    this.adm.sendUserId(this.loginResponse.data.id);
+
+    this.router.navigate(['/documentation']);
+  }
+  modalRef4Close() {
+    this.modalRef4.hide();
   }
 }

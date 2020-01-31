@@ -20,13 +20,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        // canActivateChild: [true],
-        children: [
-          {
-            path: '',
-            loadChildren: './adminpanel/adminpanel.module#AdminpanelModule',
-          },
-        ],
+        loadChildren: './adminpanel/adminpanel.module#AdminpanelModule',
       },
     ],
   },

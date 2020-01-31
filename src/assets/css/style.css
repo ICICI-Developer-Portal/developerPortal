@@ -514,6 +514,7 @@ input:focus{
     text-transform: uppercase;
     height: 40px;
 }
+/* margin added */
 .tryItFreeBtn{
     background: #ffffff;
     border: 1px solid #004a7f;
