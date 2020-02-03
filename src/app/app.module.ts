@@ -16,10 +16,20 @@ import { DocumentationDashbComponent } from './documentation-dashb/documentation
 import { DocumentationDashbModule } from './documentation-dashb/documentation-dashb.module';
 import { VariablesService } from './services/Variables.service';
 import { AdminPortalComponent } from './admin-portal/admin-portal.component';
-import { DownloadPdfServiceComponent } from './LandingPage/downloadPdfService.component';
-
+import {
+  MatDialogModule,
+  MAT_DIALOG_DEFAULT_OPTIONS,
+} from '@angular/material/dialog';
+import { SigninModalComponent } from './LandingPage/home/common-modal/signin-modal.component';
+import { ForgotPasswordModalComponent } from './LandingPage/home/common-modal/forgotpassword-modal.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
-  declarations: [AppComponent, AdminPortalComponent],
+  declarations: [
+    AppComponent,
+    AdminPortalComponent,
+    SigninModalComponent,
+    ForgotPasswordModalComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -31,6 +41,9 @@ import { DownloadPdfServiceComponent } from './LandingPage/downloadPdfService.co
     HttpModule,
     UserservicesModule,
     MailverifyModule,
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },
@@ -38,8 +51,9 @@ import { DownloadPdfServiceComponent } from './LandingPage/downloadPdfService.co
     LoginService,
     VariablesService,
     DashboardService,
-    DownloadPdfServiceComponent,
+    // { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } },
   ],
   bootstrap: [AppComponent],
+  entryComponents: [SigninModalComponent],
 })
 export class AppModule {}

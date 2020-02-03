@@ -43,66 +43,217 @@ import { RemittanceComponent } from './Sidenav-pages/Sidenav-Subpages/remittance
 import { AuthGuard } from '../services/auth.guard';
 import { CompositepayComponent } from './Sidenav-pages/Sidenav-Subpages/compositepay/compositepay.component';
 
-
 const routes: Routes = [
-    {
-        path: '',
-        component: DocumentationDashbComponent,
-        children: [
-            { path: '', redirectTo: 'documentation', pathMatch :'full' },
-            { path: 'documentation', component: DocumentationComponent, canActivate: [AuthGuard] },
-            { path: 'apidetails/:id', component: ApiDetailsComponent, canActivate: [AuthGuard] },
-            // sidenav pages
-            { path: 'accountdeposit', component: AccountDepositComponent, canActivate: [AuthGuard] },
-            { path: 'buildingblock', component: BuildingBlocksComponent, canActivate: [AuthGuard] },
-            { path: 'commercialbank', component: CommertialBankComponent, canActivate: [AuthGuard] },
-            { path: 'corporatebank', component: CorporateBankComponent, canActivate: [AuthGuard] },
-            { path: 'loanandcard', component: LoanandCardComponent, canActivate: [AuthGuard] },
-            { path: 'payment', component: PaymentsComponent, canActivate: [AuthGuard] },
-            { path: 'viewallapi', component: ViewAllApiComponent, canActivate: [AuthGuard] },
-            { path: 'merchantonboarding', component: MerchantOnboardingComponent, canActivate: [AuthGuard] },
+  {
+    path: '',
+    component: DocumentationDashbComponent,
+    children: [
+      { path: '', redirectTo: 'documentation', pathMatch: 'full' },
+      {
+        path: 'documentation',
+        component: DocumentationComponent,
+        //canActivate: [AuthGuard],
+      },
+      {
+        path: 'apidetails/:id',
+        component: ApiDetailsComponent,
+        canActivate: [AuthGuard],
+      },
+      // sidenav pages
+      {
+        path: 'accountdeposit',
+        component: AccountDepositComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'buildingblock',
+        component: BuildingBlocksComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'commercialbank',
+        component: CommertialBankComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'corporatebank',
+        component: CorporateBankComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'loanandcard',
+        component: LoanandCardComponent,
+        //canActivate: [AuthGuard],
+      },
+      {
+        path: 'payment',
+        component: PaymentsComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'viewallapi',
+        component: ViewAllApiComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'merchantonboarding',
+        component: MerchantOnboardingComponent,
+        canActivate: [AuthGuard],
+      },
 
-             // subpages pages
-             { path: 'offers', component: OffersComponent, canActivate: [AuthGuard] },
-             { path: 'customerauthentication', component: CustomerAuthComponent, canActivate: [AuthGuard] },
-             { path: 'customeronboarding', component: CustomerOnboardingComponent, canActivate: [AuthGuard] },
-             { path: 'autoloan', component: AutoloanComponent, canActivate: [AuthGuard] },
-             { path: 'personalloan', component: PersonalLoanComponent, canActivate: [AuthGuard] },
-             { path: 'autoloan', component: AutoLoanComponent, canActivate: [AuthGuard] },
-             { path: 'loantopup', component: LoanTopUpComponent, canActivate: [AuthGuard] },
-             { path: 'loanmanagement', component: LoanmanagementComponent, canActivate: [AuthGuard] },
-             { path: 'creditcards', component: CreditcardsComponent, canActivate: [AuthGuard] },
-             { path: 'prepaidcards', component: PrepaidcardComponent, canActivate: [AuthGuard] },
-             { path: 'paylater', component: PaylaterComponent, canActivate: [AuthGuard] },
-             { path: 'PaymentUPI1', component: PaymentUPIComponent, canActivate: [AuthGuard] },
-             { path: 'PaymentUPI2', component: PaymentsUPI2Component, canActivate: [AuthGuard] },
-             { path: 'utilitypayments', component: UtilityPaymentsComponent, canActivate: [AuthGuard] },
-             { path: 'fixeddeposit', component: FixeddepositComponent, canActivate: [AuthGuard] },
-             { path: 'savingaccount', component: SavingaccountComponent, canActivate: [AuthGuard] },
-             { path: 'iWishaccount', component: IwishaccountComponent, canActivate: [AuthGuard] },
-             { path: 'corporateinternetbanking', component: CorporateinternetbankingComponent, canActivate: [AuthGuard] },
-             { path: 'cashdepositmachine', component: CashdepositmachineComponent, canActivate: [AuthGuard] },
-             { path: 'cmspayment', component: CmspaymentComponent, canActivate: [AuthGuard] },
-             { path: 'cmscollection', component: CmscollectionComponent, canActivate: [AuthGuard] },
-             { path: 'IMPSapi', component: InstaIMPSComponent, canActivate: [AuthGuard] },
-             { path: 'eazypay', component:EazypayComponent, canActivate: [AuthGuard]},
-             { path: 'recurringdeposit', component:RecurringdepositComponent, canActivate: [AuthGuard]},
-             { path: 'currentaccount', component:CurrentaccountComponent, canActivate: [AuthGuard]},
-             { path: 'accountopening', component:AccountopeningComponent, canActivate: [AuthGuard]},
-             { path: 'ecollection', component:EcollectionComponent, canActivate: [AuthGuard]},
-             { path: 'isurepay', component:IsurepayComponent, canActivate: [AuthGuard]},
-             { path: 'remittance', component:RemittanceComponent, canActivate: [AuthGuard]},
-             { path: 'compositepay', component:CompositepayComponent, canActivate: [AuthGuard]},
-           
-        ]
-
-    }
+      // subpages pages
+      { path: 'offers', component: OffersComponent, canActivate: [AuthGuard] },
+      {
+        path: 'customerauthentication',
+        component: CustomerAuthComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'customeronboarding',
+        component: CustomerOnboardingComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'autoloan',
+        component: AutoloanComponent,
+        //canActivate: [AuthGuard],
+      },
+      {
+        path: 'personalloan',
+        component: PersonalLoanComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'autoloan',
+        component: AutoLoanComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'loantopup',
+        component: LoanTopUpComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'loanmanagement',
+        component: LoanmanagementComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'creditcards',
+        component: CreditcardsComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'prepaidcards',
+        component: PrepaidcardComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'paylater',
+        component: PaylaterComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'PaymentUPI1',
+        component: PaymentUPIComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'PaymentUPI2',
+        component: PaymentsUPI2Component,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'utilitypayments',
+        component: UtilityPaymentsComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'fixeddeposit',
+        component: FixeddepositComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'savingaccount',
+        component: SavingaccountComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'iWishaccount',
+        component: IwishaccountComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'corporateinternetbanking',
+        component: CorporateinternetbankingComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'cashdepositmachine',
+        component: CashdepositmachineComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'cmspayment',
+        component: CmspaymentComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'cmscollection',
+        component: CmscollectionComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'IMPSapi',
+        component: InstaIMPSComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'eazypay',
+        component: EazypayComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'recurringdeposit',
+        component: RecurringdepositComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'currentaccount',
+        component: CurrentaccountComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'accountopening',
+        component: AccountopeningComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'ecollection',
+        component: EcollectionComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'isurepay',
+        component: IsurepayComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'remittance',
+        component: RemittanceComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'compositepay',
+        component: CompositepayComponent,
+        canActivate: [AuthGuard],
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-
-export class DocumentationDashbRoutingModule {
-}
+export class DocumentationDashbRoutingModule {}

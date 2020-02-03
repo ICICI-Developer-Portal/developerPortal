@@ -4,19 +4,30 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PasswordValidation } from './password.validator';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormsModule,
+  ReactiveFormsModule,
+} from '@angular/forms';
+import { PasswordValidation } from '../../layout/header/password.validator';
 import { ChangeDetectorRef } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { SessionService } from 'src/app/services/session.service';
 import { formatDate } from '@angular/common';
+import {
+  MatDialog,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+} from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  //styleUrls: ['./header.component.css']
+  selector: 'app-common-signin-modal',
+  templateUrl: './signin-modal.component.html',
+  styleUrls: ['./signin-modal.component.css'],
 })
-export class HeaderComponent implements OnInit {
+export class SigninModalComponent implements OnInit {
   modalRef: BsModalRef;
   modalRef2: BsModalRef;
   modalRef3: BsModalRef;
@@ -60,6 +71,7 @@ export class HeaderComponent implements OnInit {
     private router: Router,
     private adm: LoginService,
     private toasterService: ToasterService,
+    public dialogRef: MatDialogRef<SigninModalComponent>,
   ) {
     this.btn_Sign();
     this.adm.getUserId().subscribe(data => {
@@ -202,7 +214,8 @@ export class HeaderComponent implements OnInit {
     });
 
     try {
-      this.modalRef.hide();
+      //this.modalRef.hide();
+      this.dialogRef.close();
     } catch (e) {}
   }
 
@@ -224,15 +237,13 @@ export class HeaderComponent implements OnInit {
     var json = { username: username, password: password };
     this.spinnerService.show();
     this.adm.Login(json).subscribe((data: any) => {
-      console.log('data body');
-      console.log(data._body);
       var response = data._body;
       this.loginResponse = JSON.parse(response);
-      console.log(this.loginResponse);
       if (this.loginResponse.status == true) {
         var timer = this.SessionService.session();
         this.show = false;
-        this.modalRef.hide();
+
+        //this.modalRef.hide();
         //this.toastrmsg('success', "Login has been Successfully");
         // this.sessionSet('username', obj.data.username);
         // localStorage.setItem('username', obj.data.username);
@@ -245,12 +256,13 @@ export class HeaderComponent implements OnInit {
 
         this.adm.LoginPortal(json).subscribe(
           res => {
-            this.router.navigate(['/index']);
+            // this.router.navigate(['/index']);
           },
           err => {
-            this.router.navigate(['/index']);
+            //this.router.navigate(['/index']);
           },
         );
+        this.dialogRef.close();
         this.modalRef4 = this.modalService.show(loginsuccess, {
           backdrop: 'static',
         });
@@ -306,7 +318,6 @@ export class HeaderComponent implements OnInit {
       this.adm.sign_up(json).subscribe((data: any) => {
         var response = data._body;
         var obj = JSON.parse(response);
-        console.log(obj);
         if (obj.status == true) {
           this.signup_jira();
           this.toastrmsg(
@@ -416,11 +427,9 @@ export class HeaderComponent implements OnInit {
       this.adm
         .verify_otp(this.signupForm2.value, this.otp_txt_id)
         .subscribe((data: any) => {
-          console.log('otp verification section');
           var response = data._body;
           var obj = JSON.parse(response);
           if (obj.status == true) {
-            console.log('otp success');
             this.shfrmSFThird = true;
             this.shfrmSFFirst = false;
             this.shfrmSFSecond = false;
@@ -428,7 +437,6 @@ export class HeaderComponent implements OnInit {
             this.otp_verified = 1;
             //this.toastrmsg('success', "Verified Otp");
           } else {
-            console.log('otp error');
             this.shfrmSFSecond = true;
             this.shfrmSFThird = false;
             this.shfrmSFFirst = false;
@@ -482,7 +490,7 @@ export class HeaderComponent implements OnInit {
       var obj = JSON.parse(response);
       if (obj.status == true) {
         this.toastrmsg('success', ' Please check your mail');
-        this.router.navigate(['/index']);
+        //this.router.navigate(['/index']);
         this.modalRef3.hide();
         this.spinnerService.hide();
       } else {
@@ -591,6 +599,7 @@ export class HeaderComponent implements OnInit {
 
   //login success pop up modal
   clickOk() {
+    console.log('path name', this.router.url);
     this.modalRef4.hide();
     this.sessionSet('username', this.loginResponse.data.username);
     localStorage.setItem('username', this.loginResponse.data.username);
@@ -600,7 +609,7 @@ export class HeaderComponent implements OnInit {
     localStorage.setItem('email', this.loginResponse.data.email);
     this.adm.sendUserId(this.loginResponse.data.id);
 
-    this.router.navigate(['/documentation']);
+    this.router.navigate([this.router.url]);
   }
   modalRef4Close() {
     this.modalRef4.hide();
