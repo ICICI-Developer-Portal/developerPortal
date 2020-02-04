@@ -177,15 +177,31 @@
                         </div>
                      </div>
                   </div>
-                  <div class="row mb20">
+                  <!-- <div class="row mb20">
                      <div class="col-md-12 mb-xs-30">
                         <div><label for="password">Company Name</label></div>
                         <input name="company" formControlName="companyName" class="input-login" #company>
                         <div *ngIf="companyName.invalid && (companyName.dirty || isSubmitted)" class="text-danger form-error">
                            Company Name is required.
                         </div>
+                        
+                     </div>
+                  </div> -->
+                  <div class="row mb20">
+                     <div class="col-md-12 mb-xs-30">
+                        <div><label for="password">Company Name</label></div>
+                        <input name="company" formControlName="companyName" class="input-login" matInput [matAutocomplete]="auto" #company (keyup)="getCompanyName(company.value)">
+                        <mat-autocomplete #auto="matAutocomplete">
+                           <mat-option *ngFor="let companyname of companyNames" [value]="companyname">
+                             {{companyname}}
+                           </mat-option>
+                         </mat-autocomplete>
+                        <div *ngIf="companyName.invalid && (companyName.dirty || isSubmitted)" class="text-danger form-error">
+                           Company Name is required.
+                        </div>
                      </div>
                   </div>
+                  
                   <div class="row mb20">
                      <div class="col-md-12 mb-xs-30">
                         <div><label for="password">Domain Name</label></div>
@@ -242,7 +258,11 @@
                      <li ><button type="button" (click)="save1()" [disabled]="!signupForm.valid || !isemail_check"  [ngClass]="signupForm.valid || !isemail_check ? 'btn-blue':'btn-white'"   class ='btn' class="signInBtn verifyBtn" > Next</button></li>
                   </ul>                        
             </div>
+            
+               
+             
          </form>
+
          <form [formGroup]="signupForm2" [hidden]="!shfrmSFSecond">
             <div class="tab-pane">            
                <div class="row mb20">
@@ -417,7 +437,6 @@
       </div>
      
       <div class="modal-body">
-         
          <div class="row success-label-div">
             <Label class="success-label">Login Successful</Label>
          </div>
@@ -426,7 +445,6 @@
                <img src="assets/images/image 2.JPG" width="100%"/>
             </div>
          </div>
-         
       </div>
       <div class="modal-footer modal-footer-border">
          <div class="row w100p m0">
@@ -440,5 +458,7 @@
          </div>
       </div>
    </ng-template>
+
+   
    <!-- End Modal -->
 <!-- End Modal -->

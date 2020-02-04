@@ -30,8 +30,6 @@ export class DashboardService {
   }
 
   getTreeData() {
-    console.log('get tree data');
-
     let headers = new Headers({
       'Content-Type': 'application/x-www-form-urlencoded',
     });

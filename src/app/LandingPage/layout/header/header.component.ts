@@ -10,6 +10,9 @@ import { ChangeDetectorRef } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { SessionService } from 'src/app/services/session.service';
 import { formatDate } from '@angular/common';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { startWith, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -50,6 +53,9 @@ export class HeaderComponent implements OnInit {
   otp_verified = 0;
   domainLst: any[];
   loginResponse: any;
+  companyNamesDetails: any;
+  companyNames: any;
+
   constructor(
     private SessionService: SessionService,
     private authService: AuthService,
@@ -115,7 +121,9 @@ export class HeaderComponent implements OnInit {
     this.shfrmSFFirst = true;
     this.shfrmSFSecond = false;
     this.shfrmSFThird = false;
+    this.companyNames = [];
   }
+
   get firstname() {
     return this.signupForm.get('firstname');
   }
@@ -171,9 +179,7 @@ export class HeaderComponent implements OnInit {
 
   session() {
     var timer = this.SessionService.session();
-    console.log(timer);
     this.adm.getUserId().subscribe(data => {
-      console.log('headerdata', data);
       this.logged_in =
         data != '' && data != null && data != undefined ? true : false;
       this.showbtn = !this.logged_in;
@@ -224,11 +230,8 @@ export class HeaderComponent implements OnInit {
     var json = { username: username, password: password };
     this.spinnerService.show();
     this.adm.Login(json).subscribe((data: any) => {
-      console.log('data body');
-      console.log(data._body);
       var response = data._body;
       this.loginResponse = JSON.parse(response);
-      console.log(this.loginResponse);
       if (this.loginResponse.status == true) {
         var timer = this.SessionService.session();
         this.show = false;
@@ -306,7 +309,6 @@ export class HeaderComponent implements OnInit {
       this.adm.sign_up(json).subscribe((data: any) => {
         var response = data._body;
         var obj = JSON.parse(response);
-        console.log(obj);
         if (obj.status == true) {
           this.signup_jira();
           this.toastrmsg(
@@ -600,5 +602,15 @@ export class HeaderComponent implements OnInit {
   }
   modalRef4Close() {
     this.modalRef4.hide();
+  }
+
+  //componay name autocomplete
+  getCompanyName(companyName) {
+    this.adm.getCompanyName(companyName).subscribe(data => {
+      if (data.status === 200) {
+        this.companyNamesDetails = data;
+        this.companyNames = JSON.parse(this.companyNamesDetails._body);
+      }
+    });
   }
 }

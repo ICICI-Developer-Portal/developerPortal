@@ -566,7 +566,6 @@ export class LoginService {
     return this.http.post(this.apiUrl + 'has-admin-access', query, options);
   }
   downloadCertificate(filePath) {
-    console.log('login service', filePath);
     var query = filePath;
     let headers = new Headers({
       'Content-Type': 'application/x-www-form-urlencoded',
@@ -577,6 +576,13 @@ export class LoginService {
       'https://developer.icicibank.com/' + 'download',
       query,
       options,
+    );
+  }
+
+  getCompanyName(companyName) {
+    return this.http.get(
+      'https://developer.icicibank.com/rest/GetCompanyDetails?Name=' +
+        companyName,
     );
   }
 }

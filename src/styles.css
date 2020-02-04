@@ -489,3 +489,12 @@ a:hover {
 .ok-btn {
   width: 50%;
 }
+
+.cdk-overlay-container {
+  position: fixed;
+  z-index: 9999;
+}
+.mat-option {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 14px !important;
+}
