@@ -1,3 +1,5 @@
+<toaster-container></toaster-container>
+<!-- <ng4-loading-spinner> </ng4-loading-spinner> -->
 <div>
   <div class="modal-header">
     <h3 class="modal-title pull-left">Please Login</h3>
@@ -47,7 +49,6 @@
             data-dismiss="modal"
             data-toggle="modal"
             data-target="#signUp"
-            
             (click)="Login(username.value, password.value, loginsuccess)"
           >
             Login
@@ -153,9 +154,8 @@
           Credentials
         </a>
       </li>
-      <!-- <li role="presentation" ><a href="#Agreement" aria-controls="Agreement" role="tab" data-toggle="tab">Agreement</a></li> -->
     </ul>
-    <!-- Tab panes -->
+
     <div class="tab-content tab-content1">
       <form [formGroup]="signupForm" [hidden]="!shfrmSFFirst">
         <input
@@ -184,7 +184,7 @@
             </div>
             <div class="col-md-6">
               <div><label for="company">Email</label></div>
-              <!-- <input name="email" formControlName="email" class="input-login" #Email (input)="OnCheckEmail(Email.value)"> -->
+
               <input
                 name="email"
                 formControlName="email"
@@ -228,15 +228,7 @@
           <div class="row mb20">
             <div class="col-md-12 mb-xs-30">
               <div><label for="password">Domain Name</label></div>
-              <!-- <select class="form-control input-login select-drop" formControlName="domainNm">
-                       <option value="">Select Domain</option>
-                       <option value="Accounts and Deposits">Accounts and Deposits</option>
-                       <option value="Loans and Cards">Loans and Cards</option>
-                       <option value="Building Blocks">Building Blocks</option>
-                       <option value="Corporate">Corporate</option>
-                       <option value="Payments">Payments</option>
-                       <option value="Commercial">Commercial </option>
-                    </select> -->
+
               <select
                 class="form-control select-drop input-login"
                 formControlName="domainNm"
@@ -374,7 +366,7 @@
               </button>
             </div>
           </div>
-          <!-- <ng-template #elseBlock> -->
+
           <div class="row mb20" *ngIf="showOtp">
             <div class="col-md-9 mb-xs-30">
               <div>
@@ -403,7 +395,7 @@
               </div>
             </div>
           </div>
-          <!-- </ng-template> -->
+
           <div class="clearfix"></div>
           <br />
           <ul class="nav nav-tabs nav-tabs1" role="tablist">

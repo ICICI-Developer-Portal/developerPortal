@@ -489,3 +489,10 @@ a:hover {
 .ok-btn {
   width: 50%;
 }
+
+.align-items-center {
+  align-items: center;
+}
+.doc-icici-logo {
+  margin-top: 0 !important;
+}

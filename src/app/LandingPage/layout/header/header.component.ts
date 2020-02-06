@@ -116,6 +116,7 @@ export class HeaderComponent implements OnInit {
     this.shfrmSFSecond = false;
     this.shfrmSFThird = false;
   }
+
   get firstname() {
     return this.signupForm.get('firstname');
   }

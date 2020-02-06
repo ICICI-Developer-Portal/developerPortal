@@ -21,14 +21,15 @@ import {
   MAT_DIALOG_DEFAULT_OPTIONS,
 } from '@angular/material/dialog';
 import { SigninModalComponent } from './LandingPage/home/common-modal/signin-modal.component';
-import { ForgotPasswordModalComponent } from './LandingPage/home/common-modal/forgotpassword-modal.component';
+import { SignupModalComponent } from './LandingPage/home/common-modal/signup-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ToasterModule, ToasterService } from 'angular2-toaster';
 @NgModule({
   declarations: [
     AppComponent,
     AdminPortalComponent,
     SigninModalComponent,
-    ForgotPasswordModalComponent,
+    SignupModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,6 +45,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatDialogModule,
     FormsModule,
     ReactiveFormsModule,
+    ToasterModule,
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },
@@ -54,6 +56,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     // { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } },
   ],
   bootstrap: [AppComponent],
-  entryComponents: [SigninModalComponent],
+  entryComponents: [SigninModalComponent, SignupModalComponent],
 })
 export class AppModule {}

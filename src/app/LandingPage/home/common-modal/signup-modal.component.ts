@@ -12,11 +12,11 @@ import {
 } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-common-forgotpassword-modal',
-  templateUrl: './forgotpassword-modal.component.html',
+  selector: 'app-common-signup-modal',
+  templateUrl: './signup-modal.component.html',
   styleUrls: ['./signin-modal.component.css'],
 })
-export class ForgotPasswordModalComponent implements OnInit {
+export class SignupModalComponent implements OnInit {
   modalRef3: BsModalRef;
   isusername: boolean = false;
   issetpwd: boolean = false;

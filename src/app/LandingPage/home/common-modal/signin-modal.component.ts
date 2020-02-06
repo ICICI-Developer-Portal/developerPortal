@@ -71,6 +71,7 @@ export class SigninModalComponent implements OnInit {
     private router: Router,
     private adm: LoginService,
     private toasterService: ToasterService,
+    public dialog: MatDialog,
     public dialogRef: MatDialogRef<SigninModalComponent>,
   ) {
     this.btn_Sign();
@@ -173,6 +174,7 @@ export class SigninModalComponent implements OnInit {
   }
 
   toastrmsg(type, title) {
+    console.log('toastermsg', type, title);
     var toast: Toast = {
       type: type,
       title: title,
@@ -183,9 +185,8 @@ export class SigninModalComponent implements OnInit {
 
   session() {
     var timer = this.SessionService.session();
-    console.log(timer);
+
     this.adm.getUserId().subscribe(data => {
-      console.log('headerdata', data);
       this.logged_in =
         data != '' && data != null && data != undefined ? true : false;
       this.showbtn = !this.logged_in;
@@ -194,15 +195,21 @@ export class SigninModalComponent implements OnInit {
 
   openModal2(signup: TemplateRef<any>) {
     this.modalRef2 = this.modalService.show(signup, { backdrop: 'static' });
+
     try {
-      this.modalRef.hide();
+      //this.modalRef.hide();
+      this.dialogRef.close();
     } catch (e) {}
     this.signupForm.controls['otp_verified'].setValue('0');
     this.otp_verified = 0;
     this.ref.markForCheck();
   }
   openModal(signin: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(signin, { backdrop: 'static' });
+    //this.modalRef = this.modalService.show(signin, { backdrop: 'static' });
+    const dialogRef = this.dialog.open(SigninModalComponent, {
+      disableClose: true,
+    });
+    // return false;
 
     try {
       this.modalRef2.hide();
@@ -479,7 +486,9 @@ export class SigninModalComponent implements OnInit {
 
   // forget Password function
   forgot(username: any) {
+    console.log('forgot pass click');
     if (username == '') {
+      console.log('user name empty');
       this.toastrmsg('error', 'Enter Username');
       return;
     }
@@ -489,7 +498,7 @@ export class SigninModalComponent implements OnInit {
       var response = data._body;
       var obj = JSON.parse(response);
       if (obj.status == true) {
-        this.toastrmsg('success', ' Please check your mail');
+        this.toastrmsg('success', 'Please check your mail');
         //this.router.navigate(['/index']);
         this.modalRef3.hide();
         this.spinnerService.hide();
@@ -599,7 +608,6 @@ export class SigninModalComponent implements OnInit {
 
   //login success pop up modal
   clickOk() {
-    console.log('path name', this.router.url);
     this.modalRef4.hide();
     this.sessionSet('username', this.loginResponse.data.username);
     localStorage.setItem('username', this.loginResponse.data.username);

@@ -47,6 +47,7 @@ export class AuthGuard implements CanActivate {
           //     queryParams: { returnUrl: state.url },
           //   });
           //   return false;
+
           const dialogRef = this.dialog.open(SigninModalComponent, {
             disableClose: true,
           });
