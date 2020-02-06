@@ -10,20 +10,16 @@ import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 import { ModalModule } from 'ngx-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
-    imports: [
-        CommonModule,
-          LayoutRoutingModule,
-          ModalModule.forRoot(),
-          ToasterModule.forRoot(),
-          BrowserAnimationsModule,
-          Ng4LoadingSpinnerModule.forRoot(),
-          FormsModule , 
-          ReactiveFormsModule,
-    ],
-    declarations: [
-        LayoutComponent, 
-        FooterComponent,
-        HeaderComponent, 
-    ]
+  imports: [
+    CommonModule,
+    LayoutRoutingModule,
+    ModalModule.forRoot(),
+    ToasterModule.forRoot(),
+    BrowserAnimationsModule,
+    Ng4LoadingSpinnerModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule,
+  ],
+  declarations: [LayoutComponent, FooterComponent, HeaderComponent],
 })
 export class LayoutModule {}

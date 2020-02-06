@@ -45,7 +45,7 @@ import { ToasterModule, ToasterService } from 'angular2-toaster';
     MatDialogModule,
     FormsModule,
     ReactiveFormsModule,
-    ToasterModule,
+    ToasterModule.forRoot(),
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },
