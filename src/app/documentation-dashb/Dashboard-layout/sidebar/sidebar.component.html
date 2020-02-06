@@ -1907,13 +1907,12 @@
                    </li>
                    <!-------------------------Business Banking-------------------------------------->
                    <!-------------------------Commercial Banking-------------------------------------->
-                   <li class="nav-link">
+                   <!-- <li class="nav-link">
                       <a [routerLink]="['/commercialbank']" id="v-pills-CommercialBanking-tab" data-toggle="pill" href="javascript:;" role="tab" aria-controls="v-pills-home" aria-selected="true"  >Trade Service
                       <img class="dropdownIcon" src="assets/images/dropdown-2.svg" alt=""></a>
                       <ul class="collapse nav-pills-first-level submenuLevelOne list-unstyled">
                          <li class="nav-link">
-                            <!-- <a [routerLink]="['/remittance']" id="v-pills-messages-tab" data-toggle="pill" href="javascript:;" role="tab" aria-controls="v-pills-messages" aria-selected="false">Outward Remittance<img class="dropdownIcon" src="assets/images/dropdown-2.svg" alt="">
-                            </a> -->
+                            
                             <a [routerLink]="['/remittance']" id="v-pills-messages-tab" data-toggle="pill" href="javascript:;" role="tab" aria-controls="v-pills-messages" aria-selected="false">Outward Remittance<img class="dropdownIcon" src="assets/images/dropdown-2.svg" alt="">
                             </a>
                             <ul class="submenuLevelTwo nav-pills-first-level collapse list-unstyled">
@@ -1967,7 +1966,80 @@
                            </ul>
                         </li>
                       </ul>
-                   </li>
+                   </li> -->
+                   <!-----------trade service-->
+                   <li class="nav-link">
+                     <a [routerLink]="['/commercialbank']" id="v-pills-CommercialBanking-tab" data-toggle="pill" href="javascript:;" role="tab" aria-controls="v-pills-messages" aria-selected="false"   >Trade Service<img class="dropdownIcon" src="assets/images/dropdown-2.svg" alt="">
+                     </a>
+                     <ul class="submenuLevelOne collapse nav-pills-first-level list-unstyled">
+                        <li class="nav-link">
+                           <a id="v-pills-messages-tab" data-toggle="pill" href="javascript:;" role="tab" aria-controls="v-pills-messages" aria-selected="false">Remittance<img class="dropdownIcon" src="assets/images/dropdown-2.svg" alt=""></a>
+                           <ul class="submenuLevelTwo nav-pills-first-level collapse list-unstyled">
+                              <li class="nav-link">
+                                 <a  id="v-pills-collect-from-VPA-tab" data-toggle="pill" href="javascript:;" role="tab " aria-controls="v-pills-collect-from-VPA" aria-selected="false"  >
+                                    Inward Remittance<img class="dropdownIcon" src="assets/images/dropdown-2.svg" alt="">
+                                 </a>
+                                 
+                                 <ul class="submenuLevelTwo nav-pills-first-level collapse list-unstyled">
+                                    <li class="nav-link">
+                                       <a id="v-pills-List-Customer-Accounts-tab" href="javascript:;" data-toggle="pill" role="tab" aria-selected="false" (click)="AppId('1120')">
+                                       Balance Inquiry
+                                       </a>
+                                    </li>
+                                    <li class="nav-link">
+                                       <a id="v-pills-List-Customer-Accounts-tab" href="javascript:;" data-toggle="pill" role="tab" aria-selected="false" (click)="AppId('1119')">
+                                       Account Inquiry
+                                       </a>
+                                    </li>
+                                    <li class="nav-link">
+                                       <a id="v-pills-List-Customer-Accounts-tab" href="javascript:;" data-toggle="pill" role="tab" aria-selected="false" (click)="AppId('1118')">
+                                       Transaction Inquiry
+                                       </a>
+                                    </li>
+                                    <li class="nav-link">
+                                       <a id="v-pills-List-Customer-Accounts-tab" href="javascript:;" data-toggle="pill" role="tab" aria-selected="false" (click)="AppId('1117')">
+                                       Transaction Order
+                                       </a>
+                                    </li>
+                                 </ul>
+                              </li>
+                            
+                       
+                              
+                              
+                              <li class="nav-link">
+                                 <a  [routerLink]="['/remittance']" id="v-pills-messages-tab" data-toggle="pill" href="javascript:;" role="tab" aria-selected="false"  >
+                                    Outward Remittance
+                                 </a>
+                                 
+                              </li>
+                           </ul>
+                        </li>
+                        
+                        <li class="nav-link">
+                           <a id="v-pills-messages-tab" data-toggle="pill" href="javascript:;" role="tab" aria-controls="v-pills-messages" aria-selected="false"   >Electronic Bank Guarantee<img class="dropdownIcon" src="assets/images/dropdown-2.svg" alt="">
+                           </a>
+                           <ul class="submenuLevelTwo nav-pills-first-level collapse list-unstyled">
+                              <li class="nav-link">
+                                 <a id="v-pills-List-Customer-Accounts-tab" href="javascript:;" data-toggle="pill" role="tab" aria-selected="false" (click)="AppId('1206')">
+                                    Issuance
+                                 </a>
+                              </li>
+                              <li class="nav-link">
+                                 <a id="v-pills-List-Customer-Accounts-tab" href="javascript:;" data-toggle="pill" role="tab" aria-selected="false" (click)="AppId('1207')">
+                                    Amendment
+                                 </a>
+                              </li>
+                              <li class="nav-link">
+                                 <a id="v-pills-List-Customer-Accounts-tab" href="javascript:;" data-toggle="pill" role="tab" aria-selected="false" (click)="AppId('1208')">
+                                    Verify Bank Guarantee
+                                 </a>
+                              </li>
+                           </ul>
+                           
+                        </li>
+                     </ul>
+                  </li>
                    <!-------------------------Commercial Banking-------------------------------------->
                    <!-------------------------View All APIs-------------------------------------->
                    <li class="nav-link viewAllLink">

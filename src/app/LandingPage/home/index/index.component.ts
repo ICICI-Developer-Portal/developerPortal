@@ -1345,4 +1345,11 @@ export class IndexComponent implements OnInit {
       return result;
     }
   }
+
+  numericOnly(event): boolean {
+    console.log('keypress');
+    let patt = /^([0-9])$/;
+    let result = patt.test(event.key);
+    return result;
+  }
 }

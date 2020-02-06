@@ -268,7 +268,7 @@
                <div class="row mb20">
                      <div class="col-md-8 mb-xs-30">
                         <div><label for="mobile">Please enter the Phone Number</label></div>
-                        <input id="mobileNumber" formControlName="mobile_no" Type="number" class="input-login" name="mobile" required #Mobile [readonly]="(signupForm.value.otp_verified == 1)">
+                        <input id="mobileNumber" formControlName="mobile_no" class="input-login" name="mobile" required #Mobile [readonly]="(signupForm.value.otp_verified == 1)" (keypress)="numericOnly($event)">
                         <div  *ngIf="mobile_no.invalid && (mobile_no.dirty || isSubmitted)" class="text-danger form-error">
                            Mobile Number is required.
                            </div>
