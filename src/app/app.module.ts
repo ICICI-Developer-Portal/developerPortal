@@ -17,9 +17,10 @@ import { DocumentationDashbModule } from './documentation-dashb/documentation-da
 import { VariablesService } from './services/Variables.service';
 import { AdminPortalComponent } from './admin-portal/admin-portal.component';
 import { DownloadPdfServiceComponent } from './LandingPage/downloadPdfService.component';
+import { AppathonComponent } from './appathon/appathon.component';
 
 @NgModule({
-  declarations: [AppComponent, AdminPortalComponent],
+  declarations: [AppComponent, AdminPortalComponent, AppathonComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
