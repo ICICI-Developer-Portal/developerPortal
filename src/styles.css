@@ -496,3 +496,12 @@ a:hover {
 .doc-icici-logo {
   margin-top: 0 !important;
 }
+.modal-header .close {
+  outline: none;
+}
+#isResError {
+  position: absolute;
+}
+.docBtn {
+  margin-left: 10px;
+}

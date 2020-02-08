@@ -21,6 +21,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   { path: 'login', component: LoginComponent },
+  { path: 'home', component: HomeComponent },
 
   //{ path: '**', redirectTo :'admin/login'},
   // { path: 'analytics', component: AnalyticsComponent ,canActivate: [AuthGuard]},
