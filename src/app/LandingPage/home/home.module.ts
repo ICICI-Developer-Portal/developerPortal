@@ -19,34 +19,34 @@ import { NDAComponent } from './nda/nda.component';
 import { ContractComponent } from './contract/contract.component';
 
 import { ResetComponent } from './reset_password/reset.component';
+// import { CommonSigninModalComponent } from './common-signin-modal/common-signin-modal.component';
 
 @NgModule({
-    imports: [
-        CommonModule,
-         HomeRoutingModule,
-         RouterModule,
-          ModalModule.forRoot(),
-          ToasterModule.forRoot(),
-          BrowserAnimationsModule,
-          Ng4LoadingSpinnerModule.forRoot(),
-          FormsModule , 
-          ReactiveFormsModule,
-         // NgMultiSelectDropDownModule.forRoot(),
-          AngularMultiSelectModule,
-         
-    ],
-    declarations: [
-        HomeComponent,
-        IndexComponent,
-        FaqComponent,
-        OnboardingrequestComponent,
-        UserprofileComponent,
-       ResetComponent,
-       TermsandconditionComponent,
-       NDAComponent,
-       ContractComponent
-    
-    ],
-
+  imports: [
+    CommonModule,
+    HomeRoutingModule,
+    RouterModule,
+    ModalModule.forRoot(),
+    ToasterModule.forRoot(),
+    BrowserAnimationsModule,
+    Ng4LoadingSpinnerModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule,
+    // NgMultiSelectDropDownModule.forRoot(),
+    AngularMultiSelectModule,
+  ],
+  declarations: [
+    HomeComponent,
+    IndexComponent,
+    FaqComponent,
+    OnboardingrequestComponent,
+    UserprofileComponent,
+    ResetComponent,
+    TermsandconditionComponent,
+    NDAComponent,
+    ContractComponent,
+    // CommonSigninModalComponent,
+  ],
+  //   entryComponents: [CommonSigninModalComponent],
 })
 export class HomeModule {}

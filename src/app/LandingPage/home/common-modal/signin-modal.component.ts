@@ -1,25 +1,33 @@
 import { Component, OnInit, TemplateRef, ɵConsole } from '@angular/core';
-import { Toast, ToasterService } from 'angular2-toaster';
+import { Toast, ToasterService, ToasterConfig } from 'angular2-toaster';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PasswordValidation } from './password.validator';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormsModule,
+  ReactiveFormsModule,
+} from '@angular/forms';
+import { PasswordValidation } from '../../layout/header/password.validator';
 import { ChangeDetectorRef } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { SessionService } from 'src/app/services/session.service';
 import { formatDate } from '@angular/common';
-import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { startWith, map } from 'rxjs/operators';
+import {
+  MatDialog,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+} from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  //styleUrls: ['./header.component.css']
+  selector: 'app-common-signin-modal',
+  templateUrl: './signin-modal.component.html',
+  styleUrls: ['./signin-modal.component.css'],
 })
-export class HeaderComponent implements OnInit {
+export class SigninModalComponent implements OnInit {
   modalRef: BsModalRef;
   modalRef2: BsModalRef;
   modalRef3: BsModalRef;
@@ -53,9 +61,7 @@ export class HeaderComponent implements OnInit {
   otp_verified = 0;
   domainLst: any[];
   loginResponse: any;
-  companyNamesDetails: any;
-  companyNames: any;
-
+  currentPath: string;
   constructor(
     private SessionService: SessionService,
     private authService: AuthService,
@@ -66,6 +72,8 @@ export class HeaderComponent implements OnInit {
     private router: Router,
     private adm: LoginService,
     private toasterService: ToasterService,
+    public dialog: MatDialog,
+    public dialogRef: MatDialogRef<SigninModalComponent>,
   ) {
     this.btn_Sign();
     this.adm.getUserId().subscribe(data => {
@@ -121,9 +129,7 @@ export class HeaderComponent implements OnInit {
     this.shfrmSFFirst = true;
     this.shfrmSFSecond = false;
     this.shfrmSFThird = false;
-    this.companyNames = [];
   }
-
   get firstname() {
     return this.signupForm.get('firstname');
   }
@@ -169,6 +175,7 @@ export class HeaderComponent implements OnInit {
   }
 
   toastrmsg(type, title) {
+    console.log('toastermsg', type, title);
     var toast: Toast = {
       type: type,
       title: title,
@@ -179,6 +186,7 @@ export class HeaderComponent implements OnInit {
 
   session() {
     var timer = this.SessionService.session();
+
     this.adm.getUserId().subscribe(data => {
       this.logged_in =
         data != '' && data != null && data != undefined ? true : false;
@@ -188,15 +196,21 @@ export class HeaderComponent implements OnInit {
 
   openModal2(signup: TemplateRef<any>) {
     this.modalRef2 = this.modalService.show(signup, { backdrop: 'static' });
+
     try {
-      this.modalRef.hide();
+      //this.modalRef.hide();
+      this.dialogRef.close();
     } catch (e) {}
     this.signupForm.controls['otp_verified'].setValue('0');
     this.otp_verified = 0;
     this.ref.markForCheck();
   }
   openModal(signin: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(signin, { backdrop: 'static' });
+    //this.modalRef = this.modalService.show(signin, { backdrop: 'static' });
+    const dialogRef = this.dialog.open(SigninModalComponent, {
+      disableClose: true,
+    });
+    // return false;
 
     try {
       this.modalRef2.hide();
@@ -208,7 +222,8 @@ export class HeaderComponent implements OnInit {
     });
 
     try {
-      this.modalRef.hide();
+      //this.modalRef.hide();
+      this.dialogRef.close();
     } catch (e) {}
   }
 
@@ -235,7 +250,8 @@ export class HeaderComponent implements OnInit {
       if (this.loginResponse.status == true) {
         var timer = this.SessionService.session();
         this.show = false;
-        this.modalRef.hide();
+
+        //this.modalRef.hide();
         //this.toastrmsg('success', "Login has been Successfully");
         // this.sessionSet('username', obj.data.username);
         // localStorage.setItem('username', obj.data.username);
@@ -248,12 +264,13 @@ export class HeaderComponent implements OnInit {
 
         this.adm.LoginPortal(json).subscribe(
           res => {
-            this.router.navigate(['/index']);
+            // this.router.navigate(['/index']);
           },
           err => {
-            this.router.navigate(['/index']);
+            //this.router.navigate(['/index']);
           },
         );
+        this.dialogRef.close();
         this.modalRef4 = this.modalService.show(loginsuccess, {
           backdrop: 'static',
         });
@@ -324,8 +341,9 @@ export class HeaderComponent implements OnInit {
           this.shfrmSFFirst = true;
           this.shfrmSFSecond = false;
           this.shfrmSFThird = false;
+          this.currentPath = this.router.url;
 
-          this.router.navigate(['/index']);
+          this.router.navigate([this.currentPath]);
         } else {
           this.shfrmSFThird = true;
           this.shfrmSFSecond = false;
@@ -418,11 +436,9 @@ export class HeaderComponent implements OnInit {
       this.adm
         .verify_otp(this.signupForm2.value, this.otp_txt_id)
         .subscribe((data: any) => {
-          console.log('otp verification section');
           var response = data._body;
           var obj = JSON.parse(response);
           if (obj.status == true) {
-            console.log('otp success');
             this.shfrmSFThird = true;
             this.shfrmSFFirst = false;
             this.shfrmSFSecond = false;
@@ -430,7 +446,6 @@ export class HeaderComponent implements OnInit {
             this.otp_verified = 1;
             //this.toastrmsg('success', "Verified Otp");
           } else {
-            console.log('otp error');
             this.shfrmSFSecond = true;
             this.shfrmSFThird = false;
             this.shfrmSFFirst = false;
@@ -473,7 +488,9 @@ export class HeaderComponent implements OnInit {
 
   // forget Password function
   forgot(username: any) {
+    console.log('forgot pass click');
     if (username == '') {
+      console.log('user name empty');
       this.toastrmsg('error', 'Enter Username');
       return;
     }
@@ -483,8 +500,8 @@ export class HeaderComponent implements OnInit {
       var response = data._body;
       var obj = JSON.parse(response);
       if (obj.status == true) {
-        this.toastrmsg('success', ' Please check your mail');
-        this.router.navigate(['/index']);
+        this.toastrmsg('success', 'Please check your mail');
+        //this.router.navigate(['/index']);
         this.modalRef3.hide();
         this.spinnerService.hide();
       } else {
@@ -602,26 +619,9 @@ export class HeaderComponent implements OnInit {
     localStorage.setItem('email', this.loginResponse.data.email);
     this.adm.sendUserId(this.loginResponse.data.id);
 
-    this.router.navigate(['/documentation']);
+    this.router.navigate([this.router.url]);
   }
   modalRef4Close() {
     this.modalRef4.hide();
-  }
-
-  //componay name autocomplete
-  getCompanyName(companyName) {
-    this.adm.getCompanyName(companyName).subscribe(data => {
-      if (data.status === 200) {
-        this.companyNamesDetails = data;
-        this.companyNames = JSON.parse(this.companyNamesDetails._body);
-      }
-    });
-  }
-
-  numericOnly(event): boolean {
-    console.log('keypress');
-    let patt = /^([0-9])$/;
-    let result = patt.test(event.key);
-    return result;
   }
 }
