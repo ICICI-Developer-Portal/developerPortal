@@ -21,16 +21,10 @@ import {
   MAT_DIALOG_DEFAULT_OPTIONS,
 } from '@angular/material/dialog';
 import { SigninModalComponent } from './LandingPage/home/common-modal/signin-modal.component';
-import { SignupModalComponent } from './LandingPage/home/common-modal/signup-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToasterModule, ToasterService } from 'angular2-toaster';
 @NgModule({
-  declarations: [
-    AppComponent,
-    AdminPortalComponent,
-    SigninModalComponent,
-    SignupModalComponent,
-  ],
+  declarations: [AppComponent, AdminPortalComponent, SigninModalComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -56,6 +50,6 @@ import { ToasterModule, ToasterService } from 'angular2-toaster';
     // { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } },
   ],
   bootstrap: [AppComponent],
-  entryComponents: [SigninModalComponent, SignupModalComponent],
+  entryComponents: [SigninModalComponent],
 })
 export class AppModule {}
