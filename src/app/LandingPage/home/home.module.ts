@@ -22,33 +22,33 @@ import { ResetComponent } from './reset_password/reset.component';
 import { AppathonComponent } from './appathon/appathon.component';
 
 @NgModule({
-    imports: [
-        CommonModule,
-         HomeRoutingModule,
-         RouterModule,
-          ModalModule.forRoot(),
-          ToasterModule.forRoot(),
-          BrowserAnimationsModule,
-          Ng4LoadingSpinnerModule.forRoot(),
-          FormsModule , 
-          ReactiveFormsModule,
-         // NgMultiSelectDropDownModule.forRoot(),
-          AngularMultiSelectModule,
-         
-    ],
-    declarations: [
-        HomeComponent,
-        IndexComponent,
-        FaqComponent,
-        OnboardingrequestComponent,
-        UserprofileComponent,
-       ResetComponent,
-       TermsandconditionComponent,
-       NDAComponent,
-       ContractComponent,
-       AppathonComponent
-    
-    ],
+  imports: [
+    CommonModule,
+    HomeRoutingModule,
+    RouterModule,
+    ModalModule.forRoot(),
+    ToasterModule.forRoot(),
+    BrowserAnimationsModule,
+    Ng4LoadingSpinnerModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule,
+    // NgMultiSelectDropDownModule.forRoot(),
+    AngularMultiSelectModule,
+  ],
 
+  declarations: [
+    HomeComponent,
+    IndexComponent,
+    FaqComponent,
+    OnboardingrequestComponent,
+    UserprofileComponent,
+    ResetComponent,
+    TermsandconditionComponent,
+    NDAComponent,
+    ContractComponent,
+    AppathonComponent,
+  ],
+
+  // import { CommonSigninModalComponent } from './common-signin-modal/common-signin-modal.component';
 })
 export class HomeModule {}

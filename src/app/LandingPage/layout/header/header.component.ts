@@ -457,14 +457,18 @@ export class HeaderComponent implements OnInit {
 
   // End region
 
+  // Documentation(signin: any) {
+  //   if (localStorage.getItem('id') != null) {
+  //     this.router.navigate(['/documentation']);
+  //     localStorage.setItem('IsReload', 'true');
+  //   } else {
+  //     this.modalRef = this.modalService.show(signin, { backdrop: 'static' });
+  //     this.modalRef2.hide();
+  //   }
+  // }
   Documentation(signin: any) {
-    if (localStorage.getItem('id') != null) {
-      this.router.navigate(['/documentation']);
-      localStorage.setItem('IsReload', 'true');
-    } else {
-      this.modalRef = this.modalService.show(signin, { backdrop: 'static' });
-      this.modalRef2.hide();
-    }
+    this.router.navigate(['/documentation']);
+    localStorage.setItem('IsReload', 'true');
   }
 
   // forget Password function

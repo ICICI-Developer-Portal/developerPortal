@@ -16,7 +16,7 @@ import { DocumentationDashbComponent } from './documentation-dashb/documentation
 import { DocumentationDashbModule } from './documentation-dashb/documentation-dashb.module';
 import { VariablesService } from './services/Variables.service';
 import { AdminPortalComponent } from './admin-portal/admin-portal.component';
-import { DownloadPdfServiceComponent } from './LandingPage/downloadPdfService.component';
+//import { DownloadPdfServiceComponent } from './LandingPage/downloadPdfService.component';
 import { AppathonComponent } from './appathon/appathon.component';
 import { AdvertisementComponent } from './advertisement.component';
 //import {AppathonLandingComponent} from './advertisement.component';
@@ -27,13 +27,16 @@ import {
   MAT_DIALOG_DEFAULT_OPTIONS,
 } from '@angular/material/dialog';
 
+import { SigninModalComponent } from './LandingPage/home/common-modal/signin-modal.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ToasterModule, ToasterService } from 'angular2-toaster';
 @NgModule({
   declarations: [
     AppComponent,
     AdminPortalComponent,
+    SigninModalComponent,
     AppathonComponent,
     AdvertisementComponent,
-    //AppathonLandingComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +50,10 @@ import {
     UserservicesModule,
     MailverifyModule,
     MatDialogModule,
+
+    FormsModule,
+    ReactiveFormsModule,
+    ToasterModule.forRoot(),
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },
@@ -54,9 +61,9 @@ import {
     LoginService,
     VariablesService,
     DashboardService,
-    DownloadPdfServiceComponent,
+    // { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } },
   ],
-  entryComponents: [AdvertisementComponent],
+  entryComponents: [AdvertisementComponent, SigninModalComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
