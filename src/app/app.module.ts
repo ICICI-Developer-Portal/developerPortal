@@ -18,9 +18,23 @@ import { VariablesService } from './services/Variables.service';
 import { AdminPortalComponent } from './admin-portal/admin-portal.component';
 import { DownloadPdfServiceComponent } from './LandingPage/downloadPdfService.component';
 import { AppathonComponent } from './appathon/appathon.component';
+import { AdvertisementComponent } from './advertisement.component';
+//import {AppathonLandingComponent} from './advertisement.component';
+//import { AppathonAdComponent } from './appathon-ad/appathon-ad.component';
+//import { AppathonComponent } from './appathon/appathon-root/appathon.component';
+import {
+  MatDialogModule,
+  MAT_DIALOG_DEFAULT_OPTIONS,
+} from '@angular/material/dialog';
 
 @NgModule({
-  declarations: [AppComponent, AdminPortalComponent, AppathonComponent],
+  declarations: [
+    AppComponent,
+    AdminPortalComponent,
+    AppathonComponent,
+    AdvertisementComponent,
+    //AppathonLandingComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -32,6 +46,7 @@ import { AppathonComponent } from './appathon/appathon.component';
     HttpModule,
     UserservicesModule,
     MailverifyModule,
+    MatDialogModule,
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },
@@ -41,6 +56,7 @@ import { AppathonComponent } from './appathon/appathon.component';
     DashboardService,
     DownloadPdfServiceComponent,
   ],
+  entryComponents: [AdvertisementComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

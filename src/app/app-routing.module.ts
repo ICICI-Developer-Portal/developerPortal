@@ -4,6 +4,7 @@ import { LayoutComponent } from './LandingPage/layout/layout.component';
 import { MailverifyComponent } from './mailverify/mailverify.component';
 import { AuthGuard } from './services/auth.guard';
 import { AdminPortalComponent } from './admin-portal/admin-portal.component';
+import { AppathonComponent } from './appathon/appathon.component';
 
 const routes: Routes = [
   // { path: '', redirectTo :'index', pathMatch :'full' },
@@ -21,6 +22,17 @@ const routes: Routes = [
       {
         path: '',
         loadChildren: './adminpanel/adminpanel.module#AdminpanelModule',
+      },
+    ],
+  },
+  {
+    path: 'appathon',
+    component: AppathonComponent,
+    children: [
+      {
+        path: '',
+        loadChildren:
+          './appathon-landing/appathon-landing.module#AppathonLandingModule',
       },
     ],
   },

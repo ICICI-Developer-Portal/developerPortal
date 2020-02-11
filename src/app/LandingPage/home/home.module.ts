@@ -19,6 +19,7 @@ import { NDAComponent } from './nda/nda.component';
 import { ContractComponent } from './contract/contract.component';
 
 import { ResetComponent } from './reset_password/reset.component';
+import { AppathonComponent } from './appathon/appathon.component';
 
 @NgModule({
     imports: [
@@ -44,7 +45,8 @@ import { ResetComponent } from './reset_password/reset.component';
        ResetComponent,
        TermsandconditionComponent,
        NDAComponent,
-       ContractComponent
+       ContractComponent,
+       AppathonComponent
     
     ],
 

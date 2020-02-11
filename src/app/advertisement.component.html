@@ -1,0 +1,91 @@
+<!-- <div>
+  <div class="modal-header">
+    <h3 class="modal-title pull-left">Please Login</h3>
+    <button
+      type="button"
+      class="close pull-right"
+      aria-label="Close"
+      mat-dialog-close
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row mb30">
+      <div class="col-md-12 mb-xs-10">
+        <div><label for="user">Username</label></div>
+        <input name="user" class="input-login" #username />
+        <div class="text-danger form-error ng-star-inserted" *ngIf="isusername">
+          Please Enter UserNames.
+        </div>
+      </div>
+    </div>
+    <div class="row mb10">
+      <div class="col-md-12">
+        <div><label for="password" type="password">Password</label></div>
+        <input name="password" type="password" class="input-login" #password />
+        <div class="text-danger form-error ng-star-inserted" *ngIf="issetpwd">
+          Please Enter Password.
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <a class="forgotPassword cursor" (click)="Modalforgotpassw(forgotpassw)"
+          >Forgot Password?</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="row w100p m0">
+      <div class="col-12 plr0 mb30">
+        <div>
+          <button
+            type="submit"
+            class="signInBtn w100p"
+            data-dismiss="modal"
+            data-toggle="modal"
+            data-target="#signUp"
+            (click)="Login(username.value, password.value, loginsuccess)"
+          >
+            Login
+          </button>
+          <div
+            class="text-danger form-error ng-star-inserted"
+            *ngIf="is_res_error != ''"
+          >
+            {{ is_res_error }}.
+          </div>
+        </div>
+      </div>
+      <div class="col-12 plr0">
+        <p>
+          Do not have an account? Please
+          <span
+            ><a class="signIn" (click)="openModal2(signup)">Register</a></span
+          >
+        </p>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="modal-header loginsuccess-modal-border">
+  <button
+    type="button"
+    class="close pull-right"
+    aria-label="Close"
+    (click)="modalRefClose()"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body" (click)="modalRefImgClick()">
+  <div class="row mb10">
+    <div class="col-md-12">
+      <img src="assets/images/appathon-banner.png" width="100%" height="75%" />
+    </div>
+  </div>
+</div>

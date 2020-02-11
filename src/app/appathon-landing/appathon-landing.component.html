@@ -1,0 +1,141 @@
+<div id="container">
+  <app-header></app-header>
+  <!-- <router-outlet></router-outlet> -->
+  <div id="home" class="tab-pane fade in active show">
+    <section class="banner" style="margin-top: 45px;">
+      <div class="row" style="height:450px">
+        <img
+          src="assets/images/iciciApathonImg.jpg"
+          alt=""
+          style="width:100%"
+        />
+      </div>
+    </section>
+    <section class="sectionAPIs sectionAPIsGrayBg">
+      <h3>Introduction</h3>
+      <!-- <p class="text-center mb50" (click)="browse_api(signin)">Get your developers onboard, very quickly. Learn how to incorporate our
+         ICICI Bank APIs in just few easy steps.
+      </p> -->
+      <p class="text-center mb50">
+        ICICI Bank invites you to eplore the world of payments innovation with
+        the 'ICICI Appathon'. We are looking for revolutionary ideas around the
+        core theme of UPI 2.0. Participants need to envision a new solution and
+        use the diverse set of UPI, Financial Services and Partner APIs to
+        create innovative minimum viable solutions. The solutions that surpass
+        the currently available solutions in the market, give a superior and
+        intuitive experience to the end user, will compete for the top prizes in
+        the Grand Finale. The selected top three winners will be awarded with a
+        prize money of Rs. 10 lakh along with a potential engagement opportunity
+        with ICICI Bank. They will also have a potential opportunity to be
+        mentored by the program partners. So get started and registered now!
+      </p>
+      <div style="display: flex;justify-content: center;">
+        <a class="signInBtn mr10">SIGN UP</a>
+      </div>
+    </section>
+    <section class="sectionAPIs sectionAPIsGrayBg" style="background: white;">
+      <h3>Program Details</h3>
+
+      <div class="row howItWorksContainerMargin mb50">
+        <div style="width:100%; display: flex;justify-content: space-between;">
+          <div style="width:25%; display:flex; align-items: center;">
+            <div style="border:1px solid;padding: 10px;">
+              <p>Phase 1</p>
+              <div style="display: flex;align-items: center;">
+                <div>
+                  Participants need to register by providing a brief summary of
+                  the idea and identify categories of APIs which will be used
+                  for creating the solution.
+                </div>
+              </div>
+            </div>
+            <div class="nextArrows">
+              <img src="assets/images/nextarrows.svg" alt="" />
+            </div>
+          </div>
+          <div style="width:25%; display:flex; align-items: center;">
+            <div style="border:1px solid;padding: 10px;">
+              <p>Phase 2</p>
+              <div style="display: flex;align-items: center;">
+                <div>
+                  Shortlisted participants will be provided with access to all
+                  APIs on the partner platfor/ICICI Bank developer platform and
+                  they will have to submit a video.
+                </div>
+              </div>
+            </div>
+            <div class="nextArrows">
+              <img src="assets/images/nextarrows.svg" alt="" />
+            </div>
+          </div>
+          <div style="width:25%; display:flex; align-items: center;">
+            <div style="border:1px solid;padding: 10px;">
+              <p>Phase 3</p>
+              <div style="display: flex;align-items: center;">
+                <div>
+                  Finalists will be invited to ICICI Bank Towers, BKC, Mumbai to
+                  present their minimum viable solution to an eminent Jury.
+                </div>
+              </div>
+            </div>
+            <div class="nextArrows">
+              <img src="assets/images/nextarrows.svg" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <p style="text-align: center; ">
+        ICICI Bank Appathon will be conductedin 3 phases:
+      </p>
+    </section>
+    <section class="sectionAPIs letsGetConnected" *ngIf="!logged_in">
+      <h3>Eligibility Criteria</h3>
+      <p class="mb50" style="text-align: center;">
+        All participants must adhere to the following criteria to participate in
+        the program:
+      </p>
+
+      <ul style="font-size: 16px;color:white">
+        <li>This program is open to companies and individuals.</li>
+        <li>
+          This program is also open to companies who have previously sold,
+          licensed or otherwise provided services and/or similar solutions to
+          ICICI Bank.
+        </li>
+        <li>
+          This is a team participation program. You can have at most 5 members
+          in a team.
+        </li>
+        <li>
+          In order to participate, the team needs to use at least one of the
+          listed UPI APIs on the site. The theme of this Appathon is UPI 2.0, so
+          participants are recommended to focus on the features of UPI 2.0
+          (i.e., Mandate, Linking overdraft account on UPI, Signed Intent and
+          QR, Invoice in the Box (View and Pay). Participants are also
+          encouraged to use the Partner APIs in the Appathon. Usage of at least
+          one UPI API would be mandatory for solution to qualify.
+        </li>
+        <li>
+          You may use any other open source libraries available elsewhere.
+        </li>
+        <li>
+          By participating in the Appathon, you agree to the Terms and
+          Conditions.
+        </li>
+      </ul>
+    </section>
+    <section
+      class="sectionAPIs letsGetConnected"
+      *ngIf="!logged_in"
+      style="padding-left: 0;padding-right:0;
+      margin-bottom: 20px;"
+    >
+      <div class="row" style="height:450px">
+        <img src="assets/images/judgingBanner.jpg" alt="" style="width:100%" />
+      </div>
+    </section>
+  </div>
+  <app-footer></app-footer>
+</div>
