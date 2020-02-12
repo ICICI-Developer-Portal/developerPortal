@@ -19,8 +19,8 @@ import { NDAComponent } from './nda/nda.component';
 import { ContractComponent } from './contract/contract.component';
 
 import { ResetComponent } from './reset_password/reset.component';
-import { AppathonComponent } from './appathon/appathon.component';
-import { AppathonAdComponent } from '../../LandingPage/home/appathon-ad/appathon-ad.component';
+//import { AppathonComponent } from './appathon/appathon.component';
+//import { AppathonAdComponent } from '../../LandingPage/home/appathon-ad/appathon-ad.component';
 
 @NgModule({
   imports: [
@@ -47,8 +47,6 @@ import { AppathonAdComponent } from '../../LandingPage/home/appathon-ad/appathon
     TermsandconditionComponent,
     NDAComponent,
     ContractComponent,
-    AppathonComponent,
-    AppathonAdComponent,
   ],
 
   // import { CommonSigninModalComponent } from './common-signin-modal/common-signin-modal.component';

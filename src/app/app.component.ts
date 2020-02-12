@@ -19,11 +19,9 @@ export class AppComponent implements OnInit {
   constructor(public dialog: MatDialog) {}
 
   ngOnInit() {
-    //   const dialogRef = this.dialog.open(SigninModalComponent, {
-    //   disableClose: true,
-    // });
-
     const dialogRef = this.dialog.open(AdvertisementComponent, {
+      height: '600px',
+      width: '600px',
       disableClose: true,
     });
   }

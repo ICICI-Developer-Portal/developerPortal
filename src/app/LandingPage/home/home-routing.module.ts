@@ -10,8 +10,8 @@ import { TermsandconditionComponent } from './termsandcondition/termsandconditio
 import { NDAComponent } from './nda/nda.component';
 import { ContractComponent } from './contract/contract.component';
 import { AuthGuard } from '../../services/auth.guard';
-import { AppathonComponent } from '../../LandingPage/home/appathon/appathon.component';
-import { AppathonAdComponent } from '../../LandingPage/home/appathon-ad/appathon-ad.component';
+//import { AppathonComponent } from '../../LandingPage/home/appathon/appathon.component';
+//import { AppathonAdComponent } from '../../LandingPage/home/appathon-ad/appathon-ad.component';
 const routes: Routes = [
   { path: '', redirectTo: 'index', pathMatch: 'full' },
   {
@@ -34,7 +34,6 @@ const routes: Routes = [
       { path: 'termsandcondition', component: TermsandconditionComponent },
       { path: 'nda', component: NDAComponent },
       { path: 'contract', component: ContractComponent },
-      { path: 'appathon', component: AppathonComponent },
     ],
   },
   {
