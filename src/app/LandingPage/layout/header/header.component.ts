@@ -56,6 +56,24 @@ export class HeaderComponent implements OnInit {
   companyNamesDetails: any;
   companyNames: any;
 
+  //aapathonSignUpForm
+  appathonSignupForm: FormGroup;
+  appathonSignupForm2: FormGroup;
+  appathonSignupForm3: FormGroup;
+  appathonSignupForm4: FormGroup;
+  //aapathonSignUpForm
+
+  //aapathonSignUpForm
+  shfrmSFFirst1: boolean = false;
+  shfrmSFSecond1: boolean = false;
+  shfrmSFThird1: boolean = false;
+  //aapathonSignUpForm
+
+  //aapathonSignUpForm
+  teamList: any[];
+  teamMemberArr: any[];
+  //aapathonSignUpForm
+
   constructor(
     private SessionService: SessionService,
     private authService: AuthService,
@@ -80,6 +98,9 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    //aapathonSignUpForm
+    this.teamList = [1, 2, 3, 4, 5];
+    //aapathonSignUpForm
     this.forgetpassForm = this.formbuilder.group({
       username: ['', [Validators.required]],
     });
@@ -93,6 +114,53 @@ export class HeaderComponent implements OnInit {
       otp_verified: ['0'],
       otp_send: ['0'],
     });
+
+    //aapathonSignUpForm
+    this.appathonSignupForm = this.formbuilder.group({
+      teamName: ['', [Validators.required]],
+      captainName: ['', [Validators.required]],
+      captainMobileNumber: [
+        '',
+        [Validators.required, Validators.pattern(this.mobnumPattern)],
+      ],
+      teamEmail: ['', [Validators.required, Validators.email]],
+      teamSize: ['', [Validators.required]],
+      memberName: ['', [Validators.required]],
+      memberMobileNumber: [
+        '',
+        [Validators.required, Validators.pattern(this.mobnumPattern)],
+      ],
+      memberEmail: ['', [Validators.required, Validators.email]],
+      location: ['', [Validators.required]],
+      memberCompanyName: ['', [Validators.required]],
+      otp_verified: ['0'],
+      otp_send: ['0'],
+    });
+
+    this.appathonSignupForm2 = this.formbuilder.group({
+      mobile_no: [
+        '',
+        [Validators.required, Validators.pattern(this.mobnumPattern)],
+      ],
+      otp_code: ['', [Validators.required]],
+    });
+
+    this.appathonSignupForm3 = this.formbuilder.group(
+      {
+        username: ['', [Validators.required]],
+        password: ['', [Validators.required]],
+        confirmPassword: ['', [Validators.required]],
+        term: ['', [Validators.required]],
+      },
+      {
+        validator: PasswordValidation.MatchPassword, // your validation method
+      },
+    );
+
+    this.appathonSignupForm4 = this.formbuilder.group({
+      termsandcondition: ['', [Validators.required]],
+    });
+    //aapathonSignUpForm
 
     this.signupForm2 = this.formbuilder.group({
       mobile_no: [
@@ -122,6 +190,12 @@ export class HeaderComponent implements OnInit {
     this.shfrmSFSecond = false;
     this.shfrmSFThird = false;
     this.companyNames = [];
+
+    //aapathonSignUpForm
+    this.shfrmSFFirst1 = true;
+    this.shfrmSFSecond1 = false;
+    this.shfrmSFThird1 = false;
+    //aapathonSignUpForm
   }
 
   get firstname() {
@@ -195,6 +269,20 @@ export class HeaderComponent implements OnInit {
     this.otp_verified = 0;
     this.ref.markForCheck();
   }
+
+  //aapathonSignUpForm
+  openModalAppathonSignup(appathonSignup: TemplateRef<any>) {
+    this.modalRef2 = this.modalService.show(appathonSignup, {
+      backdrop: 'static',
+    });
+    try {
+      this.modalRef.hide();
+    } catch (e) {}
+    this.signupForm.controls['otp_verified'].setValue('0');
+    this.otp_verified = 0;
+    this.ref.markForCheck();
+  }
+  //aapathonSignUpForm
   openModal(signin: TemplateRef<any>) {
     this.modalRef = this.modalService.show(signin, { backdrop: 'static' });
 
@@ -265,7 +353,7 @@ export class HeaderComponent implements OnInit {
       }
     });
   }
-  //  Signup function
+  // Signup function
 
   sessionSet(key, value, expirationInMin = 20) {
     let expirationDate = new Date(
@@ -286,7 +374,7 @@ export class HeaderComponent implements OnInit {
       'en-US',
       '+0530',
     );
-    //var CurrentTime = new Date().getHours() + ':' + new Date().getMinutes() + ':'+  new Date().getSeconds();
+    //var CurrentTime = new Date().getHours() + ':' + new Date().getMinutes() + ':'+ new Date().getSeconds();
     try {
       var json = {
         username: this.signupForm3.value.username,
@@ -337,10 +425,76 @@ export class HeaderComponent implements OnInit {
       this.toastrmsg('error', console.error());
     }
   }
+  //aapathonSignUpForm
+
+  appathonSign_up() {
+    var CurrentTime = formatDate(
+      this.today,
+      'dd-MM-yyyy hh:mm:ss a',
+      'en-US',
+      '+0530',
+    );
+    //var CurrentTime = new Date().getHours() + ':' + new Date().getMinutes() + ':'+ new Date().getSeconds();
+    try {
+      var json = {
+        username: this.appathonSignupForm3.value.username,
+        password: this.appathonSignupForm3.value.password,
+        team_name: this.appathonSignupForm.value.teamName,
+        team_captain_name: this.appathonSignupForm.value.captainName,
+        team_captain_mobile: this.appathonSignupForm.value.captainMobileNumber,
+        team_captain_email: this.appathonSignupForm.value.teamEmail,
+        team_size: this.appathonSignupForm.value.teamSize,
+        contactNo: this.appathonSignupForm2.value.mobile_no,
+        location: this.appathonSignupForm.value.location,
+        team_members_name: JSON.stringify(this.exampleArray1),
+        team_members_mobile: JSON.stringify(this.exampleArray2),
+        team_members_email: JSON.stringify(this.exampleArray3),
+
+        company_name: this.appathonSignupForm.value.memberCompanyName,
+        tncConfirmed: '1',
+        tncConfirmedDt: CurrentTime,
+        approverName: 'YES',
+        approverEmailId: 'YES',
+        requestDt: CurrentTime,
+      };
+      this.spinnerService.show();
+      this.adm.appathon_sign_up(json).subscribe((data: any) => {
+        var response = data._body;
+        var obj = JSON.parse(response);
+        console.log(obj);
+        if (obj.status == true) {
+          this.signup_jira();
+          this.toastrmsg(
+            'success',
+            'Thanks for registering, once your application is approved it would be conveyed to you on mail',
+          );
+          this.spinnerService.hide();
+          this.appathonSignupForm.reset();
+          this.appathonSignupForm2.reset();
+          this.appathonSignupForm3.reset();
+          this.appathonSignupForm4.reset();
+          this.modalRef2.hide();
+          this.shfrmSFFirst1 = true;
+          this.shfrmSFSecond1 = false;
+          this.shfrmSFThird1 = false;
+
+          this.router.navigate(['/index']);
+        } else {
+          this.shfrmSFThird1 = true;
+          this.shfrmSFSecond1 = false;
+          this.shfrmSFFirst1 = false;
+          this.toastrmsg('error', obj.message);
+        }
+      });
+    } catch {
+      this.toastrmsg('error', console.error());
+    }
+  }
+  //aapathonSignUpForm
 
   signup_jira() {
     var CurrentTime = formatDate(this.today, 'yyyy-MM-dd', 'en-US', '+0530');
-    //var CurrentTime = new Date().getHours() + ':' + new Date().getMinutes() + ':'+  new Date().getSeconds();
+    //var CurrentTime = new Date().getHours() + ':' + new Date().getMinutes() + ':'+ new Date().getSeconds();
     var json = {
       userName: this.signupForm3.value.username,
       email: this.signupForm.value.email,
@@ -391,7 +545,37 @@ export class HeaderComponent implements OnInit {
       });
     } catch {}
   }
-
+  //aapathonSignUpForm
+  appathonSendOtp(mobile: any) {
+    this.appathonSignupForm.controls['otp_send'].setValue('0');
+    try {
+      if (mobile == '') {
+        this.ismobile_reg_check = 'Enter Mobile Number';
+        //this.toastrmsg('error', "Enter Mobile Number");
+        return;
+      }
+      var json = {
+        mobile_no: mobile,
+      };
+      this.ismobile_reg_check = '';
+      this.adm.SendOTP(json).subscribe((data: any) => {
+        var response = data._body;
+        var obj = JSON.parse(response);
+        if (obj.status == true) {
+          this.showOtp = true;
+          this.show = true;
+          this.appathonSignupForm.controls['otp_send'].setValue('1');
+          this.otp_txt_id = obj.data;
+          //this.toastrmsg('success', "OTP Sent");
+        } else {
+          this.appathonSignupForm.controls['otp_send'].setValue('0');
+          this.showOtp = true;
+          this.show = true;
+        }
+      });
+    } catch {}
+  }
+  //aapathonSignUpForm
   SendEmailOtp() {
     try {
       this.adm.SendEmailOTP(this.signupForm.value).subscribe((data: any) => {
@@ -443,7 +627,35 @@ export class HeaderComponent implements OnInit {
         });
     } catch {}
   }
-
+  //aapathonSignUpForm
+  verifyOtp2() {
+    try {
+      this.adm
+        .verify_otp(this.appathonSignupForm2.value, this.otp_txt_id)
+        .subscribe((data: any) => {
+          var response = data._body;
+          var obj = JSON.parse(response);
+          if (obj.status == true) {
+            this.shfrmSFThird1 = true;
+            this.shfrmSFFirst1 = false;
+            this.shfrmSFSecond1 = false;
+            this.appathonSignupForm.controls['otp_verified'].setValue('1');
+            this.otp_verified = 1;
+            //this.toastrmsg('success', "Verified Otp");
+          } else {
+            this.shfrmSFSecond1 = true;
+            this.shfrmSFThird1 = false;
+            this.shfrmSFFirst1 = false;
+            this.appathonSignupForm.controls['otp_verified'].setValue('0');
+            this.otp_verified = 0;
+            this.isotp_reg_check = 'Otp not verified';
+            //this.toastrmsg('error', "Otp not verified");
+          }
+          this.ref.detectChanges();
+        });
+    } catch {}
+  }
+  //aapathonSignUpForm
   // new signup form function
   save1() {
     this.shfrmSFSecond = true;
@@ -454,17 +666,26 @@ export class HeaderComponent implements OnInit {
   save2() {
     this.verifyOtp1();
   }
+  appathonSave1() {
+    this.shfrmSFSecond1 = true;
+    this.shfrmSFFirst1 = false;
+    this.shfrmSFThird1 = false;
+  }
+  appathonSave2() {
+    this.verifyOtp2();
+  }
 
+  //aapathonSignUpForm
   // End region
 
   // Documentation(signin: any) {
-  //   if (localStorage.getItem('id') != null) {
-  //     this.router.navigate(['/documentation']);
-  //     localStorage.setItem('IsReload', 'true');
-  //   } else {
-  //     this.modalRef = this.modalService.show(signin, { backdrop: 'static' });
-  //     this.modalRef2.hide();
-  //   }
+  // if (localStorage.getItem('id') != null) {
+  // this.router.navigate(['/documentation']);
+  // localStorage.setItem('IsReload', 'true');
+  // } else {
+  // this.modalRef = this.modalService.show(signin, { backdrop: 'static' });
+  // this.modalRef2.hide();
+  // }
   // }
   Documentation(signin: any) {
     this.router.navigate(['/documentation']);
@@ -539,7 +760,7 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  //  Fuction for Logout
+  // Fuction for Logout
   logout() {
     localStorage.removeItem('username');
     localStorage.removeItem('password');
@@ -609,19 +830,39 @@ export class HeaderComponent implements OnInit {
   }
 
   //componay name autocomplete
-  getCompanyName(companyName) {
-    this.adm.getCompanyName(companyName).subscribe(data => {
-      if (data.status === 200) {
-        this.companyNamesDetails = data;
-        this.companyNames = JSON.parse(this.companyNamesDetails._body);
-      }
-    });
-  }
+  // getCompanyName(companyName) {
+  // this.adm.getCompanyName(companyName).subscribe(data => {
+  // if (data.status === 200) {
+  // this.companyNamesDetails = data;
+  // this.companyNames = JSON.parse(this.companyNamesDetails._body);
+  // }
+  // });
+  // }
 
   numericOnly(event): boolean {
     console.log('keypress');
     let patt = /^([0-9])$/;
     let result = patt.test(event.key);
     return result;
+  }
+
+  appOnChange(val) {
+    var len = val;
+    this.teamMemberArr = [];
+    for (var i = 0; i < len; i++) {
+      this.teamMemberArr[i] = i + 1;
+    }
+  }
+  exampleArray1 = [];
+  exampleArray2 = [];
+  exampleArray3 = [];
+  onChangeInput1(val) {
+    this.exampleArray1.push(val);
+  }
+  onChangeInput2(val) {
+    this.exampleArray2.push(val);
+  }
+  onChangeInput3(val) {
+    this.exampleArray3.push(val);
   }
 }

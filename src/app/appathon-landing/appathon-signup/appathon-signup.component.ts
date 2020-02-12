@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PasswordValidation } from './password.validator';
+import { PasswordValidation } from '../header/password.validator';
 import { ChangeDetectorRef } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { SessionService } from 'src/app/services/session.service';
@@ -15,11 +15,11 @@ import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  //styleUrls: ['./header.component.css']
+  selector: 'app-appathon-signup',
+  templateUrl: './appathon-signup.component.html',
+  styleUrls: ['./appathon-signup.component.css'],
 })
-export class HeaderComponent implements OnInit {
+export class AppathonSignupComponent implements OnInit {
   modalRef: BsModalRef;
   modalRef2: BsModalRef;
   modalRef3: BsModalRef;
@@ -446,9 +446,9 @@ export class HeaderComponent implements OnInit {
         team_size: this.appathonSignupForm.value.teamSize,
         contactNo: this.appathonSignupForm2.value.mobile_no,
         location: this.appathonSignupForm.value.location,
-        team_members_name: JSON.stringify(this.exampleArray1),
-        team_members_mobile: JSON.stringify(this.exampleArray2),
-        team_members_email: JSON.stringify(this.exampleArray3),
+        team_members_name: this.appathonSignupForm.value.memberName,
+        team_members_mobile: this.appathonSignupForm.value.memberMobileNumber,
+        team_members_email: this.appathonSignupForm.value.memberEmail,
 
         company_name: this.appathonSignupForm.value.memberCompanyName,
         tncConfirmed: '1',
@@ -852,17 +852,5 @@ export class HeaderComponent implements OnInit {
     for (var i = 0; i < len; i++) {
       this.teamMemberArr[i] = i + 1;
     }
-  }
-  exampleArray1 = [];
-  exampleArray2 = [];
-  exampleArray3 = [];
-  onChangeInput1(val) {
-    this.exampleArray1.push(val);
-  }
-  onChangeInput2(val) {
-    this.exampleArray2.push(val);
-  }
-  onChangeInput3(val) {
-    this.exampleArray3.push(val);
   }
 }

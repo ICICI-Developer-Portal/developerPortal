@@ -5,7 +5,7 @@
     <section class="banner" style="margin-top: 45px;">
       <div class="row" style="height:450px">
         <img
-          src="assets/images/iciciApathonImg.jpg"
+          src="assets/images/ICICI-APPATHON-2020_web_1000X400.jpg"
           alt=""
           style="width:100%"
         />
@@ -29,62 +29,103 @@
         with ICICI Bank. They will also have a potential opportunity to be
         mentored by the program partners. So get started and registered now!
       </p>
-      <div style="display: flex;justify-content: center;">
-        <a class="signInBtn mr10">SIGN UP</a>
-      </div>
+      <!-- <div style="display: flex;justify-content: center;">
+        <a class="signInBtn mr10" (click)="registerForAppathon()"
+          >Register for Appathon</a
+        >
+      </div> -->
     </section>
-    <section class="sectionAPIs sectionAPIsGrayBg" style="background: white;">
-      <h3>Program Details</h3>
 
-      <div class="row howItWorksContainerMargin mb50">
-        <div style="width:100%; display: flex;justify-content: space-between;">
-          <div style="width:25%; display:flex; align-items: center;">
-            <div style="border:1px solid;padding: 10px;">
-              <p>Phase 1</p>
-              <div style="display: flex;align-items: center;">
-                <div>
-                  Participants need to register by providing a brief summary of
-                  the idea and identify categories of APIs which will be used
-                  for creating the solution.
-                </div>
+    <!-- Program details -->
+
+    <section class="sectionAPIs sectionAPIsGrayBg" style="background: white;">
+      <h3 class="mb60">Program Details</h3>
+      <div
+        class="row mb30 hidden-xs"
+        style="display:flex;justify-content: space-evenly;"
+      >
+        <div class="col-md-4">
+          <a
+            class="cursor"
+            (click)="show_build(signin)"
+            style="text-decoration:none;"
+          >
+            <div class="sectionAPICard availableAPICard">
+              <div
+                class="sectionAPICardImage"
+                style="display: flex;justify-content: center;align-items: center;"
+              >
+                <i class="material-icons" style="font-size:60px;color:#f06321"
+                  >assignment_ind</i
+                >
               </div>
+              <h4>Phase 1</h4>
+              <p>
+                Startups can register on https://developer.icicibank.com/ and
+                submit their ideas by 23 February, 2020. The names of the
+                shortlisted startups will be announced on February 27, 2020.
+                Startups will have to share a brief presentation describing
+                problem statement, market opportunity, product features, use
+                cases and APIs to be used for integration. Results of this round
+                would be declared by March 08, 2020
+              </p>
             </div>
-            <div class="nextArrows">
-              <img src="assets/images/nextarrows.svg" alt="" />
-            </div>
-          </div>
-          <div style="width:25%; display:flex; align-items: center;">
-            <div style="border:1px solid;padding: 10px;">
-              <p>Phase 2</p>
-              <div style="display: flex;align-items: center;">
-                <div>
-                  Shortlisted participants will be provided with access to all
-                  APIs on the partner platfor/ICICI Bank developer platform and
-                  they will have to submit a video.
-                </div>
+          </a>
+        </div>
+        <div class=" col-md-4">
+          <a
+            class="cursor"
+            (click)="corporate(signin)"
+            style="text-decoration:none;"
+          >
+            <div class="sectionAPICard availableAPICard ">
+              <div
+                class="sectionAPICardImage"
+                style="display: flex;justify-content: center;align-items: center;"
+              >
+                <i class="material-icons" style="font-size:60px;color:#f06321"
+                  >voice_chat</i
+                >
               </div>
+              <h4>Phase 2</h4>
+              <p>
+                Shortlisted Startups will start working on actual product and
+                integrations. Access to banks APIs would be given for product
+                development. Startups would have to provide final submission of
+                product demo by March 20, 2020. In this round startups may also
+                avail opportunity to discuss their solution with respective
+                business and technology teams.
+              </p>
             </div>
-            <div class="nextArrows">
-              <img src="assets/images/nextarrows.svg" alt="" />
-            </div>
-          </div>
-          <div style="width:25%; display:flex; align-items: center;">
-            <div style="border:1px solid;padding: 10px;">
-              <p>Phase 3</p>
-              <div style="display: flex;align-items: center;">
-                <div>
-                  Finalists will be invited to ICICI Bank Towers, BKC, Mumbai to
-                  present their minimum viable solution to an eminent Jury.
-                </div>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a
+            class="cursor"
+            (click)="loans(signin)"
+            style="text-decoration:none;"
+          >
+            <div class="sectionAPICard availableAPICard">
+              <div
+                class="sectionAPICardImage"
+                style="display: flex;justify-content: center;align-items: center;"
+              >
+                <i class="material-icons" style="font-size:60px;color:#f06321"
+                  >location_city</i
+                >
               </div>
+              <h4>Phase 3</h4>
+              <p>
+                Finalists will be announced in 19 March, 2020 They will be
+                invited to Mumbai to compete in the ‘Grand Finale’ in 20 March,
+                2020
+              </p>
             </div>
-            <div class="nextArrows">
-              <img src="assets/images/nextarrows.svg" alt="" />
-            </div>
-          </div>
+          </a>
         </div>
       </div>
     </section>
+
     <section>
       <p style="text-align: center; ">
         ICICI Bank Appathon will be conductedin 3 phases:

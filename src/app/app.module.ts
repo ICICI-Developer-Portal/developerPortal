@@ -19,6 +19,7 @@ import { AdminPortalComponent } from './admin-portal/admin-portal.component';
 //import { DownloadPdfServiceComponent } from './LandingPage/downloadPdfService.component';
 import { AppathonComponent } from './appathon/appathon.component';
 import { AdvertisementComponent } from './advertisement.component';
+import { AppathonSignupComponent } from './appathon-landing/appathon-signup/appathon-signup.component';
 //import {AppathonLandingComponent} from './advertisement.component';
 //import { AppathonAdComponent } from './appathon-ad/appathon-ad.component';
 //import { AppathonComponent } from './appathon/appathon-root/appathon.component';
@@ -37,6 +38,7 @@ import { ToasterModule, ToasterService } from 'angular2-toaster';
     SigninModalComponent,
     AppathonComponent,
     AdvertisementComponent,
+    AppathonSignupComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,7 +65,11 @@ import { ToasterModule, ToasterService } from 'angular2-toaster';
     DashboardService,
     // { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } },
   ],
-  entryComponents: [AdvertisementComponent, SigninModalComponent],
+  entryComponents: [
+    AdvertisementComponent,
+    SigninModalComponent,
+    AppathonSignupComponent,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
