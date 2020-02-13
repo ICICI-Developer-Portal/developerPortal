@@ -1183,10 +1183,10 @@
           </div>
 
           <div class="row mb20" *ngFor="let i of teamMemberArr">
-            <div class="col-md-12 mb-xs-30">
+            <div class="col-md-12 mb-xs-30" *ngIf="i > 0">
               <label for="teamMember">Team Member {{ i }}</label>
             </div>
-            <div class="col-md-6 mb-xs-10">
+            <div class="col-md-6 mb-xs-10" *ngIf="i > 0">
               <div><label for="memberName">Name</label></div>
               <input
                 name="memberName"
@@ -1203,7 +1203,7 @@
               </div>
             </div>
 
-            <div class="col-md-6 mb-xs-10">
+            <div class="col-md-6 mb-xs-10" *ngIf="i > 0">
               <div><label for="memberMobileNumber">Mobile Number</label></div>
               <input
                 id="memberMobileNumber"
@@ -1232,7 +1232,7 @@
               </div>
             </div>
 
-            <div class="col-md-12 mb-xs-30 elabel">
+            <div class="col-md-12 mb-xs-30 elabel" *ngIf="i > 0">
               <div><label for="memberEmail">Email</label></div>
               <input
                 name="memberEmail"
@@ -1363,7 +1363,7 @@
                 [disabled]="appathonSignupForm.value.otp_verified == 1"
                 type="button"
                 class="tryItFreeBtn sendOTPBtn mt25"
-                (click)="SendOtp(mobile_no.value)"
+                (click)="appathonSendOtp(mobile_no.value)"
                 style="margin-right: 0;"
               >
                 Send OTP
@@ -1371,7 +1371,7 @@
               <button
                 type="button"
                 class="tryItFreeBtn changeMobileNumber mt25"
-                (click)="SendOtp(mobile_no.value)"
+                (click)="appathonSendOtp(mobile_no.value)"
               >
                 change
               </button>
@@ -1490,7 +1490,7 @@
                   #term
                   required
                 /><span class="checkmark"></span>
-                <a [routerLink]="['/index/termsandcondition']" target="_blank"
+                <a href="/assets/documents/termsAndConditionsFinal.docx" target="_blank"
                   >ACCEPT ALL TERMS & CONDITIONS</a
                 >
                 <div
