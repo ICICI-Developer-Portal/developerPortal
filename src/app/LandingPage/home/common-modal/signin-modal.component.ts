@@ -61,6 +61,7 @@ export class SigninModalComponent implements OnInit {
   otp_verified = 0;
   domainLst: any[];
   loginResponse: any;
+  currentPath: string;
   constructor(
     private SessionService: SessionService,
     private authService: AuthService,
@@ -340,8 +341,9 @@ export class SigninModalComponent implements OnInit {
           this.shfrmSFFirst = true;
           this.shfrmSFSecond = false;
           this.shfrmSFThird = false;
+          this.currentPath = this.router.url;
 
-          this.router.navigate(['/index']);
+          this.router.navigate([this.currentPath]);
         } else {
           this.shfrmSFThird = true;
           this.shfrmSFSecond = false;

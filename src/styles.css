@@ -504,3 +504,12 @@ a:hover {
    margin: 0;
   }
   }
+.modal-header .close {
+  outline: none;
+}
+#isResError {
+  position: absolute;
+}
+.docBtn {
+  margin-left: 10px;
+}
