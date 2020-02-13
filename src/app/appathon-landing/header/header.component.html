@@ -1363,7 +1363,7 @@
                 [disabled]="appathonSignupForm.value.otp_verified == 1"
                 type="button"
                 class="tryItFreeBtn sendOTPBtn mt25"
-                (click)="SendOtp(mobile_no.value)"
+                (click)="appathonSendOtp(mobile_no.value)"
                 style="margin-right: 0;"
               >
                 Send OTP
@@ -1371,7 +1371,7 @@
               <button
                 type="button"
                 class="tryItFreeBtn changeMobileNumber mt25"
-                (click)="SendOtp(mobile_no.value)"
+                (click)="appathonSendOtp(mobile_no.value)"
               >
                 change
               </button>
@@ -1490,7 +1490,7 @@
                   #term
                   required
                 /><span class="checkmark"></span>
-                <a [routerLink]="['/index/termsandcondition']" target="_blank"
+                <a href="/assets/documents/termsAndConditionsFinal.docx" target="_blank"
                   >ACCEPT ALL TERMS & CONDITIONS</a
                 >
                 <div
