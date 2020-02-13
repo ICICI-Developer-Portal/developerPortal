@@ -496,3 +496,11 @@ a:hover {
 .doc-icici-logo {
   margin-top: 0 !important;
 }
+.elabel{
+  margin: .5rem 0;
+}
+@media (max-width: 767px) {
+  .elabel {
+   margin: 0;
+  }
+  }

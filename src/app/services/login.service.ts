@@ -127,6 +127,21 @@ export class LoginService {
     let options = new RequestOptions({ headers: headers });
     return this.http.post(this.apiUrl + 'sign_up', query, options);
   }
+
+  //#region Signup Api
+  appathon_sign_up(data) {
+    var key;
+    var query = '';
+    for (key in data) {
+      query +=
+        encodeURIComponent(key) + '=' + encodeURIComponent(data[key]) + '&';
+    }
+    let headers = new Headers({
+      'Content-Type': 'application/x-www-form-urlencoded',
+    });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(this.apiUrl + 'sign_up_appathon', query, options);
+  }
   //  #End region
 
   sign_upjira(data) {

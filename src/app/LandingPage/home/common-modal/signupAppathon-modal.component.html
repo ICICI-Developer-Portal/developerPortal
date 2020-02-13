@@ -1,0 +1,170 @@
+<div class="modal-header">
+    <h3 class="modal-title pull-left">Lets get you Onboard</h3>
+    <button
+      type="button"
+      class="close pull-right"
+      aria-label="Close"
+      mat-dialog-close
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <ul class="nav nav-tabs nav-tabs1" role="tablist">
+      <li role="presentation" class="active">
+        <a
+          [ngStyle]="{ color: shfrmSFFirst ? '#f06321' : '#919191' }"
+          href="javascript:;"
+          (click)="signup_link(1)"
+          >Basic Details <i class="fa fa-angle-right"></i
+        ></a>
+      </li>
+      <li role="presentation">
+        <a
+          [ngStyle]="{ color: shfrmSFSecond ? '#f06321' : ' #919191' }"
+          href="javascript:;"
+          (click)="signup_link(2)"
+          >Mobile Number <i class="fa fa-angle-right"></i
+        ></a>
+      </li>
+      <li role="presentation">
+        <a
+          [ngStyle]="{ color: shfrmSFThird ? '#f06321' : '#919191' }"
+          href="javascript:;"
+          (click)="signup_link(3)"
+        >
+          Credentials
+        </a>
+      </li>
+    </ul>
+    <div class="tab-content tab-content1">
+        <form [formGroup]="signupForm" [hidden]="!shfrmSFFirst">
+          <input
+            type="hidden"
+            name="otp_verified"
+            formControlName="otp_verified"
+            class="input-login"
+            #otp_verified
+          />
+          <div class="tab-pane">
+            <div class="row mb20">
+              <div class="col-md-6 mb-xs-10">
+                <div><label for="company">Team Name</label></div>
+                <input
+                  name="name"
+                  formControlName="teamname"
+                  class="input-login"
+                  #name
+                />  
+                <div
+              *ngIf="teamname.invalid && (teamname.dirty || isSubmitted)"
+              class="text-danger form-error"
+            >
+              Team Name is required.
+            </div>
+        </div>
+        </div>
+        <!-- <div class="row mb20">
+            <div class="col-md-6 mb-xs-10"> -->
+              <div><label for="company">Team Captain</label></div>
+      <!-- </div>
+      </div> -->
+        <div class="row mb20">
+            <div class="col-md-6 mb-xs-10">
+              <div><label for="company">Full Name</label></div>
+              <input
+                name="name"
+                formControlName="firstname"
+                class="input-login"
+                #name
+              />
+              <div
+                *ngIf="firstname.invalid && (firstname.dirty || isSubmitted)"
+                class="text-danger form-error"
+              >
+                First Name is required.
+              </div>
+            </div>
+            <div class="col-md-8 mb-xs-30">
+                <div>
+                  <label for="mobile">Please enter the Phone Number</label>
+                </div>
+                <input
+                  id="mobileNumber"
+                  formControlName="mobile_no"
+                  Type="number"
+                  class="input-login"
+                  name="mobile"
+                  required
+                  #Mobile
+                  [readonly]="signupForm.value.otp_verified == 1"
+                />
+                <div
+                  *ngIf="mobile_no.invalid && (mobile_no.dirty || isSubmitted)"
+                  class="text-danger form-error"
+                >
+                  Mobile Number is required.
+                </div>
+            <div class="col-md-6">
+              <div><label for="company">Email</label></div>
+  
+              <input
+                name="email"
+                formControlName="email"
+                class="input-login"
+                #Email
+                (change)="OnCheckEmail(Email.value)"
+              />
+              <div
+                *ngIf="email.invalid && (email.dirty || isSubmitted)"
+                class="text-danger form-error"
+              >
+                Email is required.
+              </div>
+              <div *ngIf="isemail_reg_check != ''" class="text-danger form-error">
+                {{ isemail_reg_check }}
+              </div>
+            </div>
+          </div>
+          <div class="row mb20">
+            <div class="col-md-12 mb-xs-30">
+              <div><label for="password">Team Size</label></div>
+  
+              <select
+                class="form-control select-drop input-login"
+                formControlName="TeamSize"
+              >
+                <option value="">Select Domain</option>
+                <option *ngFor="let d of sizeLst" [value]="d">{{ d }}</option>
+              </select>
+              <div
+                *ngIf="TeamSize.invalid && (TeamSize.dirty || isSubmitted)"
+                class="text-danger form-error"
+              >
+                Team Size is required.
+              </div>
+            </div>
+          </div>
+          </div>
+<span class="modal-title pull-left">Team Members </span><span>{{ d }}</span>
+<div class="row mb20">
+    <div class="col-md-6 mb-xs-10">
+      <div><label for="company">Team Caption</label></div>
+      <input
+        name="name"
+        formControlName="teamcaption"
+        class="input-login"
+        #name
+      />  
+      <div
+    *ngIf="teamcaption.invalid && (teamcaption.dirty || isSubmitted)"
+    class="text-danger form-error"
+  >
+    Team Caption is required.
+  </div>
+</div>
+</div>
+
+          </div>
+          </form>
+          

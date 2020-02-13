@@ -1,0 +1,283 @@
+<ng-template #appathonsignup>
+    <div class="modal-header">
+       <h3 class="modal-title pull-left">Lets get you Onboard</h3>
+       <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef2.hide()">
+       <span aria-hidden="true">&times;</span>
+       </button>
+    </div>
+    <div class="modal-body">      
+       <ul class="nav nav-tabs nav-tabs2" role="tablist">     
+          <li role="presentation" class="active" >
+             <a [ngStyle]="{'color': shfrmSFFirst ? '#f06321' : '#919191'}" href="javascript:;" (click)="appsignup_link(1)">Basic Details <i
+                   class="fa fa-angle-right"></i></a>
+          </li>   
+          <li role="presentation" >
+             <a [ngStyle]="{'color': shfrmSFSecond ? '#f06321' :' #919191'}" href="javascript:;" (click)="appsignup_link(2)">Mobile Number <i
+             class="fa fa-angle-right"></i></a>
+          </li>
+          <li role="presentation" >
+             <a [ngStyle]="{'color': shfrmSFThird ? '#f06321' : '#919191'}" href="javascript:;" (click)="appsignup_link(3)"> Credentials 
+             </a>
+          </li>
+          <!-- <li role="presentation" ><a href="#Agreement" aria-controls="Agreement" role="tab" data-toggle="tab">Agreement</a></li> -->
+       </ul>
+       <!-- Tab panes -->
+       <div class="tab-content tab-content2">
+          <form [formGroup]="appathonSignupForm" [hidden]="!shfrmSFFirst">
+             <input type="hidden" name="appotp_verified" formControlName="appotp_verified" class="input-login" #appotp_verified>
+             <div class="tab-pane">            
+                <div class="row mb20">
+                   <div class="col-md-12 mb-xs-30">
+                      <div><label for="password">Team Name</label></div>
+                      <input name="team" formControlName="teamName" class="input-login" #company>
+                      <div *ngIf="teamName.invalid && (teamName.dirty || isSubmitted)" class="text-danger form-error">
+                         Team Name is required.
+                      </div>
+                   </div>
+                </div>
+                <div class="row mb20">
+                  
+                      <div><label>Team Captain</label></div>
+                  
+                   <div class="col-md-6 mb-xs-10">
+                      <div><label for="company">Name</label></div>
+                      <input name="name" formControlName="appathonfirstname" class="input-login" #name>
+                      <div *ngIf="appathonfirstname.invalid && (appathonfirstname.dirty || isSubmitted)" class="text-danger form-error">
+                          Full name is required.
+                       </div>
+                   </div>
+                   <div class="col-md-6">
+                      <div>
+                        <label for="mobile_num">Mobile</label>
+                      </div>
+                      <input
+                        id="mobileNumber"
+                        formControlName="mobile_num"
+                        Type="number"
+                        class="input-login"
+                        name="mobileNum"
+                        required
+                        #Mobile
+                        
+                      />
+                      <div
+                        *ngIf="mobile_num.invalid && (mobile_num.dirty || isSubmitted)"
+                        class="text-danger form-error"
+                      >
+                        Mobile Number is required.
+                      </div>
+                   </div>
+                   
+                   <div class="col-md-12 mb-xs-30 elabel">
+                      <div><label for="appemail">Email</label></div>
+                      <!-- <input name="email" formControlName="email" class="input-login" #Email (input)="OnCheckEmail(Email.value)"> -->
+                      <input name="appathonemail" formControlName="appathonemail" class="input-login" #appEmail (change)="OnCheckEmail(appEmail.value)">
+                      <div *ngIf="appathonemail.invalid && (appathonemail.dirty || isSubmitted)" class="text-danger form-error">
+                         Email is required.
+                       </div>
+                       <div *ngIf="isemail_reg_check != ''" class="text-danger form-error">
+                            {{isemail_reg_check}}
+                      </div>
+                   </div>
+                
+                </div>
+                <div class="row mb20">
+                   <div class="col-md-12 mb-xs-30">
+                      <div><label for="teamSize">Team Size</label></div>
+                      <!-- <select class="form-control input-login select-drop" formControlName="domainNm">
+                         <option value="">Select Domain</option>
+                         <option value="Accounts and Deposits">Accounts and Deposits</option>
+                         <option value="Loans and Cards">Loans and Cards</option>
+                         <option value="Building Blocks">Building Blocks</option>
+                         <option value="Corporate">Corporate</option>
+                         <option value="Payments">Payments</option>
+                         <option value="Commercial">Commercial </option>
+                      </select> -->
+                      <select class="form-control select-drop input-login" formControlName="teamSize">  
+                         <option value="">Select Team Size</option>
+                         <option *ngFor="let d of teamLst" [value]="d">{{d}}</option>
+                        </select>
+                      <div *ngIf="teamSize.invalid && (teamSize.dirty || isSubmitted)" class="text-danger form-error">
+                         Team Size is required.
+                      </div>
+                   </div>
+                </div>
+                <div class="row mb20">
+                  <div class="col-md-12 mb-xs-30">
+                  <div><label>Team Members</label></div>
+                  </div>
+               </div>
+            <div class="row mb20" *ngFor="let m of teamLst; let i=index">
+               <div class="col-md-12 mb-xs-30">
+                  <div><label>Team Member{{i}}</label></div>
+                  </div>
+                <div class="col-md-6 mb-xs-10">
+                   <div><label for="firstname1">Name</label></div>
+                   <input name="firstname1" formControlName="firstname1" class="input-login" #firstname1>
+                   <div *ngIf="firstname1.invalid && (firstname1.dirty || isSubmitted)" class="text-danger form-error">
+                       Full name is required.
+                    </div>
+                </div>
+                <div class="col-md-6 mb-xs-10">
+                   <div>
+                     <label for="mobileNumber">Mobile</label>
+                   </div>
+                   <input
+                     id="appathonmobile"
+                     formControlName="mobile_num"
+                     Type="number"
+                     class="input-login"
+                     name="appathonmobile"
+                     required
+                     #appathonMobile
+                     
+                   />
+                   <div
+                     *ngIf="mobile_num.invalid && (mobile_num.dirty || isSubmitted)"
+                     class="text-danger form-error"
+                   >
+                     Mobile Number is required.
+                   </div>
+                </div>
+                
+                <div class="col-md-12 mb-xs-30 elabel">
+                   <div><label for="appemail1">Email</label></div>
+                   <!-- <input name="email" formControlName="email" class="input-login" #Email (input)="OnCheckEmail(Email.value)"> -->
+                   <input name="appemail1" formControlName="appemail1" class="input-login" #appEmail1 (change)="OnCheckEmail(appemail1.value)">
+                   <div *ngIf="appemail1.invalid && (appemail1.dirty || isSubmitted)" class="text-danger form-error">
+                      Email is required.
+                    </div>
+                    <div *ngIf="isemail_reg_check != ''" class="text-danger form-error">
+                         {{isemail_reg_check}}
+                   </div>
+                </div>
+                </div>
+                <div class="row mb20">
+                   <div class="col-md-12 mb-xs-30">
+                      <div><label for="appLocation">Location</label></div>
+                      <input name="apploc" formControlName="appLocation" class="input-login" #apploc>
+                      <div *ngIf="appLocation.invalid && (appLocation.dirty || isSubmitted)" class="text-danger form-error">
+                         Location is required.
+                      </div>
+                   </div>
+                </div>
+                <div class="row mb20">
+                   <div class="col-md-12 mb-xs-30">
+                      <div><label for="appcompany">Company Name (if any)</label></div>
+                      <input name="appathoncompany" formControlName="appcompany" class="input-login" #appathoncompany>
+                   </div>
+                </div>
+                <div class="clearfix"></div>
+                <br>
+                <ul class="nav nav-tabs nav-tabs1" role="tablist">
+                   <li ><button type="button" (click)="appathonsave1()" [disabled]="!appathonSignupForm.valid"  [ngClass]="appathonSignupForm.valid ? 'btn-blue':'btn-white'"   class ='btn' class="signInBtn verifyBtn" > Next</button></li>
+                </ul>                        
+          </div>
+       </form>
+      
+       <form [formGroup]="appathonSignupForm2" [hidden]="!shfrmSFSecond">
+          <div class="tab-pane">            
+             <div class="row mb20">
+                   <div class="col-md-8 mb-xs-30">
+                      <div><label for="appMobile">Please enter the Phone Number</label></div>
+                      <input id="appmob_no" formControlName="appathonmobile_num" Type="number" class="input-login" name="appmobile" required #appMobile [readonly]="(appathonSignupForm.value.appotp_verified == 1)">
+                      <div  *ngIf="appathonmobile_num.invalid && (appathonmobile_num.dirty || isSubmitted)" class="text-danger form-error">
+                         Mobile Number is required.
+                         </div>
+                      <div  *ngIf="ismobile_reg_check!= '' " class="text-danger form-error">
+                            {{ismobile_reg_check}}
+                      </div>
+                      <div *ngIf="(appathonSignupForm.value.appotp_send == '1' && appathonSignupForm.value.appotp_verified == 0)" class="text-success">
+                         OTP sent on your mobile no. Click <a (click)="SendOtp(Mobile.value)" href="javasript:;">here</a> to resend;
+                      </div>
+                   </div>
+                   <div class="col-md-4 mt4">
+                      <button [disabled]="(appathonSignupForm.value.appotp_verified == 1)"  type="button" class="tryItFreeBtn sendOTPBtn mt25" (click)="SendOtp(Mobile.value)">Send
+                      OTP</button>
+                      <button  type="button"
+                         class="tryItFreeBtn changeMobileNumber mt25" (click)="SendOtp(Mobile.value)">change</button>
+                            
+                      </div>
+                </div>
+                <div  class="row mb20" *ngIf="showOtp">
+                   <div class="col-md-9 mb-xs-30">
+                      <div><label for="appotp">Enter the OTP Received on your Phone Number</label></div>
+                      <input [readonly]="(appathonSignupForm.value.appotp_verified == 1)" name="appotp" formControlName="appathonotp_code" class="input-login" #appOTP>
+                      <div *ngIf="appathonotp_code.invalid && (appathonotp_code.dirty || isSubmitted)" class="text-danger form-error">
+                         OTP is required.
+                      </div>
+                      <div *ngIf="ismobile_reg_check != '' " class="text-danger form-error">{{isotp_reg_check}}
+                         </div>
+                   </div>
+                </div>
+                <div class="clearfix"></div>
+                <br>
+                <ul class="nav nav-tabs nav-tabs1" role="tablist">
+                   <li><button class ='btn'(click)="appsave2()" [disabled]="!appathonSignupForm2.valid"  [ngClass]="appathonSignupForm2.valid ? 'btn-blue':'btn-white'"  class="signInBtn verifyBtn" > Verify</button></li>
+                </ul>                      
+          </div>
+       </form>  
+       <form [formGroup]="appathonSignupForm3" [hidden]="!shfrmSFThird">
+          <div  class="tab-pane">            
+                <div class="row mb20">
+                   <div class="col-md-12">
+                      <div><label for="appusername">Username</label></div>
+                      <input formControlName="appathonusername" class="input-login" #appathonusername (change)="OnCheckUsername(appathonusername.value)" autocomplete="new-password">
+                      <div *ngIf="appathonusername.invalid && (appathonusername.dirty || isSubmitted)" class="text-danger form-error">
+                         Username is required.
+                      </div>
+                   </div>
+                </div>
+                <div class="horizontalBorder mb20"></div>
+                <div class="row">
+                   <div class="col-md-6">
+                      <div><label for="appcreatepassword">Create Password</label></div>
+                      <input type="password" formControlName="apppassword" class="input-login" #appCreatePassword>
+                      <div *ngIf="apppassword.invalid && (apppassword.dirty || isSubmitted)" class="text-danger form-error">
+                            Password is required.
+                      </div>
+                   </div>
+                   <div class="col-md-6">
+                      <div><label for="appconfirmpass">Confirm Password</label></div>
+                      <input type="password" formControlName="appconfirmPassword" class="input-login" #appconfirmpass>
+                      <div *ngIf="appconfirmPassword.invalid && (appconfirmPassword.dirty || isSubmitted)" class="text-danger form-error">
+                            Password does not match.
+                      </div>
+                   </div>
+                   <div class="clearfix"></div>
+            
+                </div>
+                <div class="row" style="margin-top: 12px;">
+                      <div class="col-md-12">
+                            <label class="checkboxContainer">
+                                  <input type="checkbox" formControlName="appterm" #appterm required><span class="checkmark"></span> 
+                                  <a [routerLink]="['/index/termsandcondition']" target="_blank">ACCEPT ALL TERMS & CONDITIONS</a> 
+                                  <div *ngIf="appterm.invalid && (appterm.invalid || isSubmitted)" class="text-danger form-error">
+                                       I ACCEPT ALL TERMS & CONDITIONS is required.
+                                     </div>
+                            </label>
+                            <div class="clearfix"></div>
+                         </div>
+                </div>
+                
+                <div class="clearfix"></div>
+                <br>
+                <ul class="nav nav-tabs nav-tabs1" role="tablist">
+                   <li ><button (click)="sign_up()" [disabled]="!appathonSignupForm3.valid"  [ngClass]="appathonSignupForm3.valid ? 'btn-blue':'btn-white'"  class ='btn' class="signInBtn verifyBtn"> Submit</button></li>
+                </ul>
+                     
+          </div>
+       </form>   
+       </div>
+    </div>
+    <div class="modal-footer">
+       <div class="row w100p m0">
+          <div class="col-12 pl0">
+             <p>Already have an account? Please <span><a class="signIn" (click)="openModal(signin)">Login</a></span></p>
+          </div>
+          <div class="col-5 pr0">
+             <div class="text-right"></div>
+          </div>
+       </div>
+    </div>
+ </ng-template>

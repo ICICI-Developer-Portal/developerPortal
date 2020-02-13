@@ -65,6 +65,9 @@ export class IndexComponent implements OnInit {
   shfrmSFFirst: boolean = false;
   shfrmSFSecond: boolean = false;
   shfrmSFThird: boolean = false;
+  shfrmSFFirst1: boolean = false;
+  shfrmSFSecond1: boolean = false;
+  shfrmSFThird1: boolean = false;
 
   domainLst = [];
   subdomainlst = [];
@@ -191,6 +194,10 @@ export class IndexComponent implements OnInit {
     this.shfrmSFSecond = false;
     this.shfrmSFThird = false;
 
+    this.shfrmSFFirst1 = true;
+    this.shfrmSFSecond1 = false;
+    this.shfrmSFThird1 = false;
+
     this.shfrmUATFirst = true;
     this.shfrmUATThird = false;
     this.shfrmUATSecond = false;
@@ -269,6 +276,9 @@ export class IndexComponent implements OnInit {
     this.shfrmSFFirst = true;
     this.shfrmSFSecond = false;
     this.shfrmSFThird = false;
+    this.shfrmSFFirst1 = true;
+    this.shfrmSFSecond1 = false;
+    this.shfrmSFThird1 = false;
   }
   already_Log(alreadylogin: any, signup: any) {
     if (localStorage.getItem('id') != null) {
@@ -509,6 +519,8 @@ export class IndexComponent implements OnInit {
   save2() {
     this.verifyOtp1();
   }
+
+  
 
   // End region
 
@@ -1093,6 +1105,19 @@ export class IndexComponent implements OnInit {
     } catch (e) {}
   }
   signup_link(id) {
+    if (this.shfrmSFFirst) {
+      this.shfrmSFFirst = true;
+    } else if (this.shfrmSFSecond) {
+      this.shfrmSFFirst = id == 1 ? true : false;
+      this.shfrmSFSecond = id > 1 ? true : false;
+    } else {
+      this.shfrmSFFirst = id == 1 ? true : false;
+      this.shfrmSFSecond = id == 2 ? true : false;
+      this.shfrmSFThird = id == 3 ? true : false;
+    }
+  }
+  
+  appsignup_link(id) {
     if (this.shfrmSFFirst) {
       this.shfrmSFFirst = true;
     } else if (this.shfrmSFSecond) {
