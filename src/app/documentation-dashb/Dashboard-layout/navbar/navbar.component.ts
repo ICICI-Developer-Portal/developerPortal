@@ -18,6 +18,7 @@ export class NavbarComponent implements OnInit {
   logged_in: Boolean = false;
   user_name = '';
   showbtn: boolean = false;
+  showOptn: boolean = false;
   id: any;
   constructor(
     private router: Router,
@@ -29,6 +30,10 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (localStorage.getItem('role') !== 'Appathon') {
+      this.showOptn = true;
+    }
+
     this.getId();
     this.id = setInterval(() => {
       this.getId();

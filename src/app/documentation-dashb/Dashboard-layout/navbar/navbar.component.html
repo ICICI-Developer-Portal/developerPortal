@@ -11,15 +11,16 @@
           ><img src="assets/images/icici-svg-2.svg" alt=""
         /></a>
       </li>
-      <li>
+      <li class="nav-item">
         <a
           class="nav-link doc-icici-logo"
           data-toggle="tab"
           [routerLink]="['/appathon/landing-page']"
+          style="font-size: 13px;line-height: 31px;"
           >Appathon</a
         >
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="showOptn">
         <a
           class="nav-link doc-icici-logo"
           id="FAQs-tab"
@@ -64,7 +65,10 @@
       <!--  <li class="nav-item">
                         <a class="nav-link active" (click)="logout()" id="pills-profile-tab" data-toggle="pill"   href="javascript:;" role="tab" aria-controls="pills-profile" aria-selected="false">Logout</a>
                      </li> -->
-      <li class="nav-item dropdown position_relative" *ngIf="showbtn === false">
+      <li
+        class="nav-item dropdown position_relative"
+        *ngIf="showbtn === false && showOptn === true"
+      >
         <a
           class="nav-link dropdown-toggle lh56"
           id="navbarMobiles"
@@ -125,7 +129,11 @@
         >
           <i class="fa fa-user-circle-o"></i>&nbsp;{{ user_name }}
         </a>
-        <div class="dropdown-content" aria-labelledby="navbarMobiles">
+        <div
+          class="dropdown-content"
+          aria-labelledby="navbarMobiles"
+          *ngIf="showOptn === true"
+        >
           <a
             style="line-height: 21px;"
             [routerLink]="['/userprofile']"
@@ -144,7 +152,31 @@
             (click)="logout()"
             >Logout</a
           >
-          <!-- <a [routerLink]="['/analytics']" class="nav-link dropdown-item" id="pills-account-analytics-tab" data-toggle="pill" href="#pills-account" role="tab" aria-controls="pills-account-analytics" aria-selected="true">Analytics</a> -->
+        </div>
+        <div
+          class="dropdown-content"
+          aria-labelledby="navbarMobiles"
+          *ngIf="showOptn === false"
+        >
+          <a
+            style="line-height: 21px;"
+            [routerLink]="['/appathon-dashboard']"
+            class="nav-link dropdown-item"
+            >Dashboard</a
+          >
+          <a
+            style="line-height: 21px;"
+            [routerLink]="['/application']"
+            class="nav-link dropdown-item"
+            >Applications</a
+          >
+
+          <a
+            style="line-height: 21px; cursor: pointer;"
+            class="nav-link dropdown-item cursor"
+            (click)="logout()"
+            >Logout</a
+          >
         </div>
       </li>
 
