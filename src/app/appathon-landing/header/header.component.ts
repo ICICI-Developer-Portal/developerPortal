@@ -99,7 +99,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     //aapathonSignUpForm
-    this.teamList = [1, 2, 3, 4, 5];
+    this.teamList = [0,1, 2, 3, 4, 5];
     //aapathonSignUpForm
     this.forgetpassForm = this.formbuilder.group({
       username: ['', [Validators.required]],
