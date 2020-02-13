@@ -99,7 +99,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     //aapathonSignUpForm
-    this.teamList = [1, 2, 3, 4, 5];
+    this.teamList = [0, 1, 2, 3, 4, 5];
     //aapathonSignUpForm
     this.forgetpassForm = this.formbuilder.group({
       username: ['', [Validators.required]],
@@ -125,12 +125,12 @@ export class HeaderComponent implements OnInit {
       ],
       teamEmail: ['', [Validators.required, Validators.email]],
       teamSize: ['', [Validators.required]],
-      memberName: ['', [Validators.required]],
-      memberMobileNumber: [
-        '',
-        [Validators.required, Validators.pattern(this.mobnumPattern)],
-      ],
-      memberEmail: ['', [Validators.required, Validators.email]],
+      // memberName: ['', [Validators.required]],
+      // memberMobileNumber: [
+      //   '',
+      //   [Validators.required, Validators.pattern(this.mobnumPattern)],
+      // ],
+      // memberEmail: ['', [Validators.required, Validators.email]],
       location: ['', [Validators.required]],
       memberCompanyName: ['', [Validators.required]],
       otp_verified: ['0'],

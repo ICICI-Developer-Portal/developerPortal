@@ -570,3 +570,11 @@ body {
   transform: rotateY(180deg);
   font-size: 16px;
 }
+.elabel {
+  margin: 0.5rem 0;
+}
+@media (max-width: 767px) {
+  .elabel {
+    margin: 0;
+  }
+}
