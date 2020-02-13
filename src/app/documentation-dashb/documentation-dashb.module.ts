@@ -54,7 +54,6 @@ import { EcollectionComponent } from './Sidenav-pages/Sidenav-Subpages/ecollecti
 import { IsurepayComponent } from './Sidenav-pages/Sidenav-Subpages/isurepay/isurepay.component';
 import { RemittanceComponent } from './Sidenav-pages/Sidenav-Subpages/remittance/remittance.component';
 import { CompositepayComponent } from './Sidenav-pages/Sidenav-Subpages/compositepay/compositepay.component';
-import { AppathonDashboardComponent } from './appathon-dashboard/appathon-dashboard.component';
 
 @NgModule({
   imports: [
@@ -117,7 +116,6 @@ import { AppathonDashboardComponent } from './appathon-dashboard/appathon-dashbo
     IsurepayComponent,
     RemittanceComponent,
     CompositepayComponent,
-    AppathonDashboardComponent,
   ],
 })
 export class DocumentationDashbModule {}

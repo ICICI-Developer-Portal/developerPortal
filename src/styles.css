@@ -578,3 +578,13 @@ body {
     margin: 0;
   }
 }
+.custom-modalbox >  mat-dialog-container {
+  display: contents;
+}
+
+.advertisementPopUp{
+  z-index: 1;
+    position: absolute;
+    color: blue;
+    right: 0px;
+}

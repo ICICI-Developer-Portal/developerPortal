@@ -26,6 +26,7 @@ export class AppComponent implements OnInit {
         height: '600px',
         width: '600px',
         disableClose: true,
+        panelClass: 'custom-modalbox'
       });
     }
   }
