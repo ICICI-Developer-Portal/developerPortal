@@ -6,6 +6,7 @@ import {
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 import { AdvertisementComponent } from './advertisement.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -16,13 +17,16 @@ export class AppComponent implements OnInit {
   title = 'ICICI';
   modalRef: BsModalRef;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private router: Router) {}
 
   ngOnInit() {
-    const dialogRef = this.dialog.open(AdvertisementComponent, {
-      height: '600px',
-      width: '600px',
-      disableClose: true,
-    });
+    var url = this.router.url;
+    if (url !== '/index/termsandcondition') {
+      const dialogRef = this.dialog.open(AdvertisementComponent, {
+        height: '600px',
+        width: '600px',
+        disableClose: true,
+      });
+    }
   }
 }

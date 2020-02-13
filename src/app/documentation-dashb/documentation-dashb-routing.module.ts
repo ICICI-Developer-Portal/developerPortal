@@ -42,6 +42,7 @@ import { IsurepayComponent } from './Sidenav-pages/Sidenav-Subpages/isurepay/isu
 import { RemittanceComponent } from './Sidenav-pages/Sidenav-Subpages/remittance/remittance.component';
 import { AuthGuard } from '../services/auth.guard';
 import { CompositepayComponent } from './Sidenav-pages/Sidenav-Subpages/compositepay/compositepay.component';
+import { AppathonDashboardComponent } from './appathon-dashboard/appathon-dashboard.component';
 
 const routes: Routes = [
   {
@@ -250,6 +251,11 @@ const routes: Routes = [
       {
         path: 'compositepay',
         component: CompositepayComponent,
+        //canActivate: [AuthGuard],
+      },
+      {
+        path: 'appathon-dashboard',
+        component: AppathonDashboardComponent,
         //canActivate: [AuthGuard],
       },
     ],
