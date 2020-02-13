@@ -5,6 +5,7 @@ import {
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 import { AppathonSignupComponent } from './appathon-signup/appathon-signup.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-appathon-landing',
@@ -12,7 +13,7 @@ import { AppathonSignupComponent } from './appathon-signup/appathon-signup.compo
   styleUrls: ['./appathon-landing.component.css'],
 })
 export class AppathonLandingComponent implements OnInit {
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private router: Router) {}
 
   ngOnInit() {}
   registerForAppathon() {
