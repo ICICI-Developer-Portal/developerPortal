@@ -55,6 +55,8 @@ export class HeaderComponent implements OnInit {
   loginResponse: any;
   companyNamesDetails: any;
   companyNames: any;
+  appathonUsername:any;
+  appathonPassword:any;
 
   //aapathonSignUpForm
   appathonSignupForm: FormGroup;
@@ -440,11 +442,22 @@ export class HeaderComponent implements OnInit {
       'en-US',
       '+0530',
     );
+    if(this.appathonSignupForm.value.username){
+      this.appathonUsername = this.appathonSignupForm.value.username;
+    }else{
+      this.appathonUsername = this.appathonSignupForm.value.username+'_'+CurrentTime;
+    }
+
+    if(this.appathonSignupForm.value.password){
+      this.appathonPassword = this.appathonSignupForm.value.password;
+    }else{
+      this.appathonPassword = this.appathonSignupForm.value.password+'_'+CurrentTime;
+    }
     //var CurrentTime = new Date().getHours() + ':' + new Date().getMinutes() + ':'+ new Date().getSeconds();
     try {
       var json = {
-        username: this.appathonSignupForm3.value.username,
-        password: this.appathonSignupForm3.value.password,
+        username: this.appathonUsername,
+        password: this.appathonPassword,
         team_name: this.appathonSignupForm.value.teamName,
         team_captain_name: this.appathonSignupForm.value.captainName,
         team_captain_mobile: this.appathonSignupForm.value.captainMobileNumber,
@@ -469,7 +482,7 @@ export class HeaderComponent implements OnInit {
         var obj = JSON.parse(response);
         console.log(obj);
         if (obj.status == true) {
-          this.signup_jira();
+          //this.signup_jira();
           this.toastrmsg(
             'success',
             'Thanks for registering, once your application is approved it would be conveyed to you on mail',
