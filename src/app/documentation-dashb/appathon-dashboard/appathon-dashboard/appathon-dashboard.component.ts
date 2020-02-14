@@ -5,6 +5,7 @@ import { AppathonService } from 'src/app/services/appathon.service';
 import { Router } from '@angular/router';
 import { ToasterService, Toast } from 'angular2-toaster';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+import { error } from 'protractor';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -46,6 +47,10 @@ export class AppathonDashboardComponent implements OnInit {
       // Validators.required,
       Validators.email,
     ]),
+    emailFormControl6 : new FormControl('', [
+      // Validators.required,
+      Validators.email,
+    ]),
     teamName : new FormControl('', [
       Validators.required,
     ]),
@@ -70,6 +75,9 @@ export class AppathonDashboardComponent implements OnInit {
     name5 : new FormControl('', [
       // Validators.required,
     ]),
+    name6 : new FormControl('', [
+      // Validators.required,
+    ]),
     mobile1 : new FormControl('', [
       // Validators.required,
       Validators.pattern("[0-9]{10}")
@@ -90,7 +98,16 @@ export class AppathonDashboardComponent implements OnInit {
       // Validators.required,
       Validators.pattern("[0-9]{10}")
     ]),
+    mobile6 : new FormControl('', [
+      // Validators.required,
+      Validators.pattern("[0-9]{10}")
+    ]),
   })
+  ideaFile: File;
+  finalSubmissionFile: File;
+  newIdeaLink = '';
+  newFinalSubmissionLink = '';
+  disableSubmit: boolean = false;
   
   //form controls
   get emailFormControl1() { return this.formGroup.get('emailFormControl1') }
@@ -98,16 +115,19 @@ export class AppathonDashboardComponent implements OnInit {
   get emailFormControl3() { return this.formGroup.get('emailFormControl3') }
   get emailFormControl4() { return this.formGroup.get('emailFormControl4') }
   get emailFormControl5() { return this.formGroup.get('emailFormControl5') }
+  get emailFormControl6() { return this.formGroup.get('emailFormControl6') }
   get mobile1() { return this.formGroup.get('mobile1') }
   get mobile2() { return this.formGroup.get('mobile2') }
   get mobile3() { return this.formGroup.get('mobile3') }
   get mobile4() { return this.formGroup.get('mobile4') }
   get mobile5() { return this.formGroup.get('mobile5') }
+  get mobile6() { return this.formGroup.get('mobile6') }
   get name1() { return this.formGroup.get('name1') }
   get name2() { return this.formGroup.get('name2') }
   get name3() { return this.formGroup.get('name3') }
   get name4() { return this.formGroup.get('name4') }
   get name5() { return this.formGroup.get('name5') }
+  get name6() { return this.formGroup.get('name6') }
   get teamName() { return this.formGroup.get('teamName') }
   get company() { return this.formGroup.get('company') }
   get location() { return this.formGroup.get('location') }
@@ -202,17 +222,37 @@ team_members_name = [];
   //reset form
   reset = () => {
     this.spinnerService.show();
-
+    this.ideaFile = undefined;
+    this.finalSubmissionFile = undefined;
     this.formGroup.reset();
     this.getAppathonDetails();
   }
 
+
   //submit form data
-  submit = () => {
+  submit = async () => {
+    this.disableSubmit = true;
     this.spinnerService.show();
 
     if(!this.formGroup.valid){
       return;
+    }
+
+    if(this.ideaFile){
+      await this.uploadFile(this.ideaFile).then((data: any) =>{
+        this.newIdeaLink = JSON.parse(data._body).FilePath;
+      }).catch(error =>{
+        this.toastrmsg('error', "Error while uploading Idea file!");
+      })
+      
+    }
+    if(this.finalSubmissionFile){
+      await this.uploadFile(this.finalSubmissionFile).then((data: any) =>{
+        this.newFinalSubmissionLink = JSON.parse(data._body).FilePath;
+      }).catch(error =>{
+        this.toastrmsg('error', "Error while uploading Final Submission file!");
+      })
+      
     }
     let count  = 0;
     let tempName = [];
@@ -231,29 +271,41 @@ team_members_name = [];
     this.formData.team_members_mobile = JSON.stringify(tempMobile);
     this.formData.team_members_name = JSON.stringify(tempName);
     this.formData.team_size = count.toString();
-    
-    this.appathonService.update_appathon_details(JSON.parse(JSON.stringify(this.formData))).subscribe((data: any) => {
+    let jsonObject = JSON.parse(JSON.stringify(this.formData));
+    delete jsonObject.ideaLink;
+    delete jsonObject.finalSubmissionLink;
+
+    jsonObject['IDEA_LINK'] = this.newIdeaLink;
+    jsonObject['FINAL_SUBMISSION_LINK'] = this.newFinalSubmissionLink;
+    this.appathonService.update_appathon_details(jsonObject).subscribe((data: any) => {
+      
       let response = JSON.parse(data._body);
       if(response.status){
         this.toastrmsg('success', 'Successfully Updated');
         this.reset();
+        this.disableSubmit = false;
+
+        
         
       }
       else {
         this.spinnerService.hide();
+        this.disableSubmit = false;
         this.toastrmsg('error', response.message);
         this.router.navigate(['/index']);
       }
     },
     (err) =>{
       this.spinnerService.hide();
+      this.disableSubmit = false;
+
       this.toastrmsg('error', "Something went wrong!");
     });
   }
 
 
   //file upload handle
-  public handleFileInput(files: FileList) {
+  public handleFileInput(files: FileList, fileFor) {
 
     let fileToUpload = files.item(0);
     let temp = fileToUpload.name.split(".");
@@ -265,8 +317,12 @@ team_members_name = [];
     ];
     
     if(ALLOWED_TYPES.indexOf(fileType.toLowerCase()) >= 0 ){
-
-      console.log(files[0])
+    if(fileFor === 'idea'){
+      this.ideaFile = files[0];
+    }
+    else this.finalSubmissionFile = files[0];
+      
+      
     }
     else{
       this.toastrmsg('error', "Invalid file type!");
@@ -275,6 +331,29 @@ team_members_name = [];
 
   comingSoon(){
     this.toastrmsg('info', "Coming Soon!");
+  }
+
+
+   uploadFile = (file) => {
+    let formData = new FormData();
+      formData.append('file', file, file.name);
+      formData.append('username', this.formData.username);
+    return new Promise((resolve, reject) =>{
+      this.appathonService.appathonFileUpload(formData).subscribe(data => {
+        resolve(data);
+      },
+      error =>{        
+        reject(error);
+      });
+    })
+     
+  }
+
+  deleteFile(type){
+    if(type === 'idea'){
+      this.ideaFile = undefined;
+    }
+    else this.finalSubmissionFile = undefined;
   }
 
 }

@@ -65,14 +65,21 @@
     Idea: 
   </div>
   <div class="col-md-5">
-<a class="signInBtn blueBtn mr10" target="_blank" [ngClass] = "{'avoid_clicks': !formData.ideaLink}"
+<a class="signInBtn blueBtn mr10" target="_blank" [ngClass] = "{'avoid_clicks': true}"
  href="{{formData.ideaLink}}">Download</a>
-<!-- <input type="file"
+<input type="file"
            id="ideaFile"
            style = "display:none"
-           (change)="handleFileInput($event.target.files, 'idea')"> -->
-           <label for="ideaFile1" class="signInBtn pinkBtn mr10" (click)="comingSoon()">Upload</label>
+           (change)="handleFileInput($event.target.files, 'idea')">
+           <label for="ideaFile" class="signInBtn pinkBtn mr10" >Upload</label>
 <a class="signInBtn orangeBtn mr10" href="assets/appathon/Idea_Template.pptx" download="Idea_Template.pptx">Download Template</a>
+<h6 *ngIf="ideaFile" style="margin-left: 135px;
+color: grey;">{{ideaFile.name}}
+<!-- <span (click)="deleteFile('idea')" style="margin-left: 14px;
+    color: red;
+    background: #d2cbcb;
+    cursor: pointer;">X</span> -->
+    </h6>
 </div>
 </div>
 
@@ -350,20 +357,78 @@ Name
 
 
 
+<!-- player5 -->
+<!-- <div class="row mb20 ">
+  <div class="col-md-2 alignTop">
+    Member5: 
+  </div>
+  <div class="col-md-3">
+<mat-form-field class="example-full-width">
+  <mat-label>Name</mat-label>
+  <input matInput [formControl]="name6" [(ngModel)]="team_members_name[4]" [errorStateMatcher]="matcher"
+         placeholder="Name">
+  
+  <mat-error *ngIf="name6.hasError('required')">
+    Name is <strong>required</strong>
+  </mat-error>
+</mat-form-field>
+</div>
+
+
+<div class="col-md-3">
+  <mat-form-field class="example-full-width">
+    <mat-label>Mobile Number</mat-label>
+    <input matInput [formControl]="mobile6" [(ngModel)]="team_members_mobile[4]" [errorStateMatcher]="matcher"
+           placeholder="Mobile Number">
+    <mat-error *ngIf="mobile6.hasError('pattern') && !mobile6.hasError('required')">
+      Please enter a valid 10 digit Mobile Number
+    </mat-error>
+    <mat-error *ngIf="mobile6.hasError('required')">
+      Mobile Number is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+  </div>
+
+
+  <div class="col-md-3">
+    <mat-form-field class="example-full-width">
+      <mat-label>Email</mat-label>
+      <input matInput [formControl]="emailFormControl6" [(ngModel)]="team_members_email[4]" [errorStateMatcher]="matcher"
+             placeholder="Ex. pat@example.com">
+      <mat-error *ngIf="emailFormControl6.hasError('email') && !emailFormControl6.hasError('required')">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="emailFormControl6.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    </div>
+</div> -->
+
+
+
+
 <div class="row mb60 ">
   <div class="col-md-2">
     Final Submission: 
   </div>
   <div class="col-md-5">
-<a class="signInBtn blueBtn mr10" [ngClass] = "{'avoid_clicks': !formData.finalSubmissionLink}"
+<a class="signInBtn blueBtn mr10" [ngClass] = "{'avoid_clicks': true}"
 target="_blank"  href="{{formData.finalSubmissionLink}}">Download</a>
 
-<!-- <input type="file"
+<input type="file"
            id="subFile"
            style = "display:none"
-           (change)="handleFileInput($event.target.files, 'sub')"> -->
-           <label for="subFile1" class="signInBtn pinkBtn mr10" (click)="comingSoon()">Upload</label>
+           (change)="handleFileInput($event.target.files, 'sub')">
+           <label for="subFile" class="signInBtn pinkBtn mr10" >Upload</label>
 <a class="signInBtn orangeBtn mr10"  href="assets/appathon/FinalSubmission_Template.pptx" download="FinalSubmission_Template.pptx">Download Template</a>
+<h6 *ngIf="finalSubmissionFile" style="margin-left: 135px;
+color: grey;">{{finalSubmissionFile.name}}
+<!-- <span (click)="deleteFile('sub')" style="margin-left: 14px;
+    color: red;
+    background: #d2cbcb;
+    cursor: pointer;">X</span> -->
+    </h6>
 </div>
 </div>
 
@@ -373,7 +438,7 @@ target="_blank"  href="{{formData.finalSubmissionLink}}">Download</a>
 
 <div class="row mb20 ">
   <div class="col-md-5">
-    <button class="signInBtn mr10" type="submit" (click)="submit()" >Submit</button>
+    <button  class="signInBtn mr10" type="submit" (click)="submit()" >Submit</button>
   <button class="tryItFreeBtn" type="reset" (click)="reset()">Reset</button>
   </div>
   
