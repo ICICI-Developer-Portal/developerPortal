@@ -3,14 +3,24 @@
   <!-- <router-outlet></router-outlet> -->
   <div id="home" class="tab-pane fade in active show">
     <section class="banner" style="margin-top: 45px;">
-      <div class="row" id="content-desktop" style="height:450px">
+      <div
+        class="row"
+        id="content-desktop"
+        style="height:450px"
+        (click)="openModalAppathonSignup(appathonSignup)"
+      >
         <img
           src="assets/images/ICICI-APPATHON-2020_web_1000X400.jpg"
           alt=""
           style="width:100%"
         />
       </div>
-      <div class="row app-ban" id="content-mobile" style="height:450px">
+      <div
+        class="row app-ban"
+        id="content-mobile"
+        style="height:450px"
+        (click)="openModalAppathonSignup(appathonSignup)"
+      >
         <img src="assets/images/app-banner.jpg" alt="" style="width:100%" />
       </div>
     </section>
@@ -165,7 +175,7 @@
       <!-- <div class="row" style="height:450px; width:100%;margin:0">
         <img src="assets/images/judgingBanner.jpg" alt="" style="width:100%" />
       </div> -->
-      <div class="row" id="judging-desktop" >
+      <div class="row" id="judging-desktop">
         <img src="assets/images/judgingBanner.jpg" alt="" style="width:100%" />
       </div>
       <div class="row app-ban" id="judging-mobile">
