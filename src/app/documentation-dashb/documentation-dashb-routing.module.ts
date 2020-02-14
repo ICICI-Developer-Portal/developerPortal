@@ -262,6 +262,10 @@ const routes: Routes = [
 
     ],
   },
+
+  { path: 'appathon-dashboard', 
+      loadChildren: './appathon-dashboard/appathon-dashboard.module#AppathonDashboardModule'}
+
 ];
 
 @NgModule({
