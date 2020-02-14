@@ -819,15 +819,19 @@ export class HeaderComponent implements OnInit {
     localStorage.setItem('username', this.loginResponse.data.username);
     localStorage.setItem('password', this.loginResponse.data.password);
     localStorage.setItem('id', this.loginResponse.data.id);
-    localStorage.setItem('role',  this.loginResponse.data.role);
-    localStorage.setItem('appathonusername',  this.loginResponse.data.appathonusername);
+    localStorage.setItem('role', this.loginResponse.data.role);
+    localStorage.setItem(
+      'appathonusername',
+      this.loginResponse.data.appathonusername,
+    );
     localStorage.setItem('email', this.loginResponse.data.email);
     this.adm.sendUserId(this.loginResponse.data.id);
-    
-    if(this.loginResponse.data.role === 'Appathon'){
-      this.router.navigate(['/appathon-dashboard']);
-    }
-    else this.router.navigate(['/documentation']);
+    this.router.navigate(['/documentation']);
+
+    // if(this.loginResponse.data.role === 'Appathon'){
+    //   this.router.navigate(['/appathon-dashboard']);
+    // }
+    // else this.router.navigate(['/documentation']);
   }
   modalRef4Close() {
     this.modalRef4.hide();
