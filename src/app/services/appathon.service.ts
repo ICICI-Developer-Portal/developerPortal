@@ -50,4 +50,19 @@ export class AppathonService {
     let options = new RequestOptions({ headers: headers });
     return this.http.post(this.apiUrl + 'update_appathon_details', query, options);
   }
+
+
+
+  appathonFileUpload(data) {
+    
+    let headers = new Headers({
+      'Content-Type': 'multipart/form-data',
+      
+    });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(
+      'https://cors-anywhere.herokuapp.com/https://developer.icicibank.com/FileUplaodHandler_Appathon',
+      data,
+    );
+  }
 }
