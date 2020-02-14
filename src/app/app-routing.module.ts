@@ -36,6 +36,12 @@ const routes: Routes = [
       },
     ],
   },
+
+  {
+    path: 'documentation',
+    loadChildren:
+          './documentation-dashb/documentation-dashb.module#DocumentationDashbModule',
+  },
 ];
 
 @NgModule({
