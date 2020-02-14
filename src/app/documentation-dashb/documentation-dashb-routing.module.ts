@@ -48,9 +48,9 @@ const routes: Routes = [
     path: '',
     component: DocumentationDashbComponent,
     children: [
-      { path: '', redirectTo: 'documentation', pathMatch: 'full' },
+      
       {
-        path: 'documentation',
+        path: '',
         component: DocumentationComponent,
         //canActivate: [AuthGuard],
       },
