@@ -272,9 +272,11 @@ team_members_name = [];
     this.formData.team_members_name = JSON.stringify(tempName);
     this.formData.team_size = count.toString();
     let jsonObject = JSON.parse(JSON.stringify(this.formData));
+    delete jsonObject.ideaLink;
+    delete jsonObject.finalSubmissionLink;
+
     jsonObject['IDEA_LINK'] = this.newIdeaLink;
     jsonObject['FINAL_SUBMISSION_LINK'] = this.newFinalSubmissionLink;
-    console.log(jsonObject)
     this.appathonService.update_appathon_details(jsonObject).subscribe((data: any) => {
       
       let response = JSON.parse(data._body);
