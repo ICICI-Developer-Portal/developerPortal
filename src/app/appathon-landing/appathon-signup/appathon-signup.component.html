@@ -1175,16 +1175,18 @@
           </div>
 
           <div class="row mb20" *ngFor="let i of teamMemberArr">
-            <div class="col-md-12 mb-xs-30">
+            <div class="col-md-12 mb-xs-30" *ngIf="i > 0">
               <label for="teamMember">Team Member {{ i }}</label>
             </div>
-            <div class="col-md-6 mb-xs-10">
+            <div class="col-md-6 mb-xs-10" *ngIf="i > 0">
               <div><label for="memberName">Name</label></div>
               <input
-                name="memberName"
-                formControlName="memberName"
+                name="memberName{{ i }}"
+                formControlName="memberName{{ i }}"
                 class="input-login"
                 #memberName
+                (change)="onChangeInput1($event.target.value)"
+                required
               />
               <div
                 *ngIf="memberName.invalid && (memberName.dirty || isSubmitted)"
@@ -1194,16 +1196,17 @@
               </div>
             </div>
 
-            <div class="col-md-6 mb-xs-10">
+            <div class="col-md-6 mb-xs-10" *ngIf="i > 0">
               <div><label for="memberMobileNumber">Mobile Number</label></div>
               <input
-                id="memberMobileNumber"
-                formControlName="memberMobileNumber"
+                id="memberMobileNumber{{ i }}"
+                formControlName="memberMobileNumber{{ i }}"
                 Type="number"
                 class="input-login"
-                name="memberMobileNumber"
+                name="memberMobileNumber{{ i }}"
                 required
                 #memberMobileNumber
+                (change)="onChangeInput2($event.target.value)"
               />
               <div
                 *ngIf="
@@ -1214,22 +1217,23 @@
               >
                 Mobile number is required.
               </div>
-              <div
+              <!-- <div
                 *ngIf="ismobile_reg_check != ''"
                 class="text-danger form-error"
               >
                 {{ ismobile_reg_check }}
-              </div>
+              </div> -->
             </div>
 
-            <div class="col-md-12 mb-xs-30 elabel">
-              <div><label for="memberEmail">Email</label></div>
+            <div class="col-md-12 mb-xs-30 elabel" *ngIf="i > 0">
+              <div><label for="memberEmail">Company Mail ID</label></div>
               <input
-                name="memberEmail"
-                formControlName="memberEmail"
+                name="memberEmail{{ i }}"
+                formControlName="memberEmail{{ i }}"
                 class="input-login"
                 #memberEmail
-                (change)="OnCheckEmail(memberEmail.value)"
+                required
+                (change)="onChangeInput3($event.target.value)"
               />
               <div
                 *ngIf="
@@ -1239,12 +1243,12 @@
               >
                 Email is required.
               </div>
-              <div
+              <!-- <div
                 *ngIf="isemail_reg_check != ''"
                 class="text-danger form-error"
               >
                 {{ isemail_reg_check }}
-              </div>
+              </div> -->
             </div>
           </div>
 

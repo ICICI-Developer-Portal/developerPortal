@@ -832,7 +832,6 @@
                 formControlName="teamEmail"
                 class="input-login"
                 #teamEmail
-                (change)="OnCheckEmail(teamEmail.value)"
               />
               <div
                 *ngIf="teamEmail.invalid && (teamEmail.dirty || isSubmitted)"
@@ -840,12 +839,7 @@
               >
                 Email is required.
               </div>
-              <div
-                *ngIf="isemail_reg_check != ''"
-                class="text-danger form-error"
-              >
-                {{ isemail_reg_check }}
-              </div>
+              
               <!-- email -->
             </div>
           </div>
@@ -880,33 +874,34 @@
             <div class="col-md-6 mb-xs-10" *ngIf="i > 0">
               <div><label for="memberName">Name</label></div>
               <input
-                name="memberName"
-                formControlName="memberName"
+                name="memberName{{ i }}"
+                formControlName="memberName{{ i }}"
                 class="input-login"
                 #memberName
                 (change)="onChangeInput1($event.target.value)"
+                required
               />
-              <!-- <div
+              <div
                 *ngIf="memberName.invalid && (memberName.dirty || isSubmitted)"
                 class="text-danger form-error"
               >
                 Member name is required.
-              </div> -->
+              </div>
             </div>
 
             <div class="col-md-6 mb-xs-10" *ngIf="i > 0">
               <div><label for="memberMobileNumber">Mobile Number</label></div>
               <input
-                id="memberMobileNumber"
-                formControlName="memberMobileNumber"
+                id="memberMobileNumber{{ i }}"
+                formControlName="memberMobileNumber{{ i }}"
                 Type="number"
                 class="input-login"
-                name="memberMobileNumber"
+                name="memberMobileNumber{{ i }}"
                 required
                 #memberMobileNumber
                 (change)="onChangeInput2($event.target.value)"
               />
-              <!-- <div
+              <div
                 *ngIf="
                   memberMobileNumber.invalid &&
                   (memberMobileNumber.dirty || isSubmitted)
@@ -914,28 +909,26 @@
                 class="text-danger form-error"
               >
                 Mobile number is required.
-              </div> -->
-              <div
+              </div>
+              <!-- <div
                 *ngIf="ismobile_reg_check != ''"
                 class="text-danger form-error"
               >
                 {{ ismobile_reg_check }}
-              </div>
+              </div> -->
             </div>
 
             <div class="col-md-12 mb-xs-30 elabel" *ngIf="i > 0">
               <div><label for="memberEmail">Company Mail ID</label></div>
               <input
-                name="memberEmail"
-                formControlName="memberEmail"
+                name="memberEmail{{ i }}"
+                formControlName="memberEmail{{ i }}"
                 class="input-login"
                 #memberEmail
-                (change)="
-                  OnCheckEmail(memberEmail.value);
-                  onChangeInput3($event.target.value)
-                "
+                required
+                (change)="onChangeInput3($event.target.value)"
               />
-              <!-- <div
+              <div
                 *ngIf="
                   memberEmail.invalid && (memberEmail.dirty || isSubmitted)
                 "
@@ -943,7 +936,7 @@
               >
                 Email is required.
               </div>
-              <div
+              <!-- <div
                 *ngIf="isemail_reg_check != ''"
                 class="text-danger form-error"
               >
@@ -991,9 +984,9 @@
               <button
                 type="button"
                 (click)="appathonSave1()"
-                [disabled]="!appathonSignupForm.valid || !isemail_check"
+                [disabled]="!appathonSignupForm.valid"
                 [ngClass]="
-                  appathonSignupForm.valid || !isemail_check
+                  appathonSignupForm.valid
                     ? 'btn-blue'
                     : 'btn-white'
                 "

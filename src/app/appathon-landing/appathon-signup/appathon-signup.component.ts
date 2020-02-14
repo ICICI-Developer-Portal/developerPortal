@@ -99,7 +99,7 @@ export class AppathonSignupComponent implements OnInit {
 
   ngOnInit() {
     //aapathonSignUpForm
-    this.teamList = [1, 2, 3, 4, 5];
+    this.teamList = [0, 1, 2, 3, 4 ];
     //aapathonSignUpForm
     this.forgetpassForm = this.formbuilder.group({
       username: ['', [Validators.required]],
@@ -125,12 +125,18 @@ export class AppathonSignupComponent implements OnInit {
       ],
       teamEmail: ['', [Validators.required, Validators.email]],
       teamSize: ['', [Validators.required]],
-      memberName: ['', [Validators.required]],
-      memberMobileNumber: [
-        '',
-        [Validators.required, Validators.pattern(this.mobnumPattern)],
-      ],
-      memberEmail: ['', [Validators.required, Validators.email]],
+      memberName1: [''],
+      memberMobileNumber1: [''],
+      memberEmail1: [''],
+      memberName2: [''],
+      memberMobileNumber2: [''],
+      memberEmail2: [''],
+      memberName3: [''],
+      memberMobileNumber3: [''],
+      memberEmail3: [''],
+      memberName4: [''],
+      memberMobileNumber4: [''],
+      memberEmail4: [''],
       location: ['', [Validators.required]],
       memberCompanyName: ['', [Validators.required]],
       otp_verified: ['0'],
@@ -856,5 +862,18 @@ export class AppathonSignupComponent implements OnInit {
     for (var i = 0; i < len; i++) {
       this.teamMemberArr[i] = i + 1;
     }
+  }
+
+  exampleArray1 = [];
+  exampleArray2 = [];
+  exampleArray3 = [];
+  onChangeInput1(val) {
+    this.exampleArray1.push(val);
+  }
+  onChangeInput2(val) {
+    this.exampleArray2.push(val);
+  }
+  onChangeInput3(val) {
+    this.exampleArray3.push(val);
   }
 }
