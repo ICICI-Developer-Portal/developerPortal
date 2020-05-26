@@ -48,9 +48,9 @@ const routes: Routes = [
     path: '',
     component: DocumentationDashbComponent,
     children: [
-      { path: '', redirectTo: 'documentation', pathMatch: 'full' },
+      
       {
-        path: 'documentation',
+        path: '',
         component: DocumentationComponent,
         //canActivate: [AuthGuard],
       },
@@ -252,8 +252,20 @@ const routes: Routes = [
         component: CompositepayComponent,
         //canActivate: [AuthGuard],
       },
+      // {
+      //   path: 'appathon-dashboard',
+      //   component: AppathonDashboardComponent,
+      //   //canActivate: [AuthGuard],
+      // },
+      { path: 'appathon-dashboard', 
+      loadChildren: './appathon-dashboard/appathon-dashboard.module#AppathonDashboardModule'}
+
     ],
   },
+
+  { path: 'appathon-dashboard', 
+      loadChildren: './appathon-dashboard/appathon-dashboard.module#AppathonDashboardModule'}
+
 ];
 
 @NgModule({

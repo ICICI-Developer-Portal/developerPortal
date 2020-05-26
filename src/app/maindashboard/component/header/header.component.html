@@ -1,7 +1,7 @@
 <div id="fixed">
   <!----------------------------------------------------------------TOP Nagvigation-------------------------------------------------------------->
   <div class="menuBar docsMenuBar">
-    <ul class="nav nav-pills" id="pills-tab" role="tablist">
+    <ul class="nav nav-pills align-items-center" id="pills-tab" role="tablist">
       <li class="nav-item">
         <a
           class="nav-link"
@@ -10,6 +10,15 @@
           aria-selected="true"
           ><img src="assets/images/icici-svg-2.svg" alt=""
         /></a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link doc-icici-logo"
+          data-toggle="tab"
+          [routerLink]="['/appathon/landing-page']"
+          style="font-size: 13px;line-height: 31px;"
+          >Appathon</a
+        >
       </li>
       <li class="nav-item">
         <a
@@ -22,6 +31,7 @@
           aria-controls="FAQs"
           aria-selected="false"
           style="font-size: 13px;line-height: 31px;"
+          *ngIf="showOptn"
           >Home</a
         >
       </li>
@@ -55,7 +65,7 @@
       <!-- <li class="nav-item">
                         <a class="nav-link active" (click)="logout()" id="pills-profile-tab" data-toggle="pill"  [routerLink]="['/documentation']" href="javascript:;" role="tab" aria-controls="pills-profile" aria-selected="false">Logout</a>
                      </li> -->
-      <li class="nav-item dropdown position_relative">
+      <li class="nav-item dropdown position_relative" *ngIf="showOptn">
         <a
           class="nav-link dropdown-toggle lh56"
           id="navbarMobiles"
@@ -113,7 +123,11 @@
         >
           <i class="fa fa-user-circle-o"></i>&nbsp;{{ user_name }}
         </a>
-        <div class="dropdown-content" aria-labelledby="navbarMobiles">
+        <div
+          class="dropdown-content"
+          aria-labelledby="navbarMobiles"
+          *ngIf="showOptn === true"
+        >
           <a
             style="line-height: 21px;cursor: pointer;"
             [routerLink]="['/userprofile']"
@@ -132,7 +146,32 @@
             (click)="logout()"
             >Logout</a
           >
-          <!-- <a [routerLink]="['/analytics']" class="nav-link dropdown-item" id="pills-account-analytics-tab" data-toggle="pill" href="#pills-account" role="tab" aria-controls="pills-account-analytics" aria-selected="true">Analytics</a> -->
+        </div>
+
+        <div
+          class="dropdown-content"
+          aria-labelledby="navbarMobiles"
+          *ngIf="showOptn === false"
+        >
+          <a
+            style="line-height: 21px;"
+            [routerLink]="['/appathon-dashboard']"
+            class="nav-link dropdown-item"
+            >Dashboard</a
+          >
+          <a
+            style="line-height: 21px;"
+            [routerLink]="['/application']"
+            class="nav-link dropdown-item"
+            >Applications</a
+          >
+
+          <a
+            style="line-height: 21px; cursor: pointer;"
+            class="nav-link dropdown-item cursor"
+            (click)="logout()"
+            >Logout</a
+          >
         </div>
       </li>
       <!--  <li class="nav-item">

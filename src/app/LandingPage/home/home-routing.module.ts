@@ -10,31 +10,41 @@ import { TermsandconditionComponent } from './termsandcondition/termsandconditio
 import { NDAComponent } from './nda/nda.component';
 import { ContractComponent } from './contract/contract.component';
 import { AuthGuard } from '../../services/auth.guard';
+//import { AppathonComponent } from '../../LandingPage/home/appathon/appathon.component';
+//import { AppathonAdComponent } from '../../LandingPage/home/appathon-ad/appathon-ad.component';
 const routes: Routes = [
-
-      { path: '', redirectTo :'index', pathMatch :'full' },
-       { path: 'index', component:LayoutComponent,
-        children:[
-          { path: '', component: IndexComponent},
-          { path: 'faq', component: FaqComponent},
-          { path: 'userprofile', component: UserprofileComponent,canActivate: [AuthGuard] },
-          { path: 'merchantOnboarding', component: OnboardingrequestComponent,canActivate: [AuthGuard]},
-          //{ path: 'dashboard', component: DashboardComponent},
-          { path: 'termsandcondition', component: TermsandconditionComponent},
-          { path: 'nda', component: NDAComponent},
-          { path: 'contract', component: ContractComponent}
-         
-       ]
+  { path: '', redirectTo: 'index', pathMatch: 'full' },
+  {
+    path: 'index',
+    component: LayoutComponent,
+    children: [
+      { path: '', component: IndexComponent },
+      { path: 'faq', component: FaqComponent },
+      {
+        path: 'userprofile',
+        component: UserprofileComponent,
+        canActivate: [AuthGuard],
       },
-      {path:'',component:LayoutComponent,children:[
-        {path:'reset_password',component:ResetComponent},
-      ]}
+      {
+        path: 'merchantOnboarding',
+        component: OnboardingrequestComponent,
+        canActivate: [AuthGuard],
+      },
+      //{ path: 'dashboard', component: DashboardComponent},
+      { path: 'termsandcondition', component: TermsandconditionComponent },
+      { path: 'nda', component: NDAComponent },
+      { path: 'contract', component: ContractComponent },
+    ],
+  },
+  {
+    path: '',
+    component: LayoutComponent,
+    children: [{ path: 'reset_password', component: ResetComponent }],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-
-export class HomeRoutingModule {
-}
+export class HomeRoutingModule {}

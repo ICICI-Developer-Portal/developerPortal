@@ -43,6 +43,7 @@ export class IndexComponent implements OnInit {
   modalRef5: BsModalRef;
   modalRef6: BsModalRef;
   modalRef7: BsModalRef;
+  modalRef8: BsModalRef;
 
   valueWidth = false;
   show: boolean = false;

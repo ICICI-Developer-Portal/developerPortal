@@ -16,15 +16,30 @@ import { DocumentationDashbComponent } from './documentation-dashb/documentation
 import { DocumentationDashbModule } from './documentation-dashb/documentation-dashb.module';
 import { VariablesService } from './services/Variables.service';
 import { AdminPortalComponent } from './admin-portal/admin-portal.component';
+//import { DownloadPdfServiceComponent } from './LandingPage/downloadPdfService.component';
+import { AppathonComponent } from './appathon/appathon.component';
+import { AdvertisementComponent } from './advertisement.component';
+import { AppathonSignupComponent } from './appathon-landing/appathon-signup/appathon-signup.component';
+//import {AppathonLandingComponent} from './advertisement.component';
+//import { AppathonAdComponent } from './appathon-ad/appathon-ad.component';
+//import { AppathonComponent } from './appathon/appathon-root/appathon.component';
 import {
   MatDialogModule,
   MAT_DIALOG_DEFAULT_OPTIONS,
 } from '@angular/material/dialog';
+
 import { SigninModalComponent } from './LandingPage/home/common-modal/signin-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToasterModule, ToasterService } from 'angular2-toaster';
 @NgModule({
-  declarations: [AppComponent, AdminPortalComponent, SigninModalComponent],
+  declarations: [
+    AppComponent,
+    AdminPortalComponent,
+    SigninModalComponent,
+    AppathonComponent,
+    AdvertisementComponent,
+    AppathonSignupComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -37,6 +52,7 @@ import { ToasterModule, ToasterService } from 'angular2-toaster';
     UserservicesModule,
     MailverifyModule,
     MatDialogModule,
+
     FormsModule,
     ReactiveFormsModule,
     ToasterModule.forRoot(),
@@ -49,7 +65,11 @@ import { ToasterModule, ToasterService } from 'angular2-toaster';
     DashboardService,
     // { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } },
   ],
+  entryComponents: [
+    AdvertisementComponent,
+    SigninModalComponent,
+    AppathonSignupComponent,
+  ],
   bootstrap: [AppComponent],
-  entryComponents: [SigninModalComponent],
 })
 export class AppModule {}

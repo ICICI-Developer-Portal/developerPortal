@@ -19,7 +19,8 @@ import { NDAComponent } from './nda/nda.component';
 import { ContractComponent } from './contract/contract.component';
 
 import { ResetComponent } from './reset_password/reset.component';
-// import { CommonSigninModalComponent } from './common-signin-modal/common-signin-modal.component';
+//import { AppathonComponent } from './appathon/appathon.component';
+//import { AppathonAdComponent } from '../../LandingPage/home/appathon-ad/appathon-ad.component';
 
 @NgModule({
   imports: [
@@ -35,6 +36,7 @@ import { ResetComponent } from './reset_password/reset.component';
     // NgMultiSelectDropDownModule.forRoot(),
     AngularMultiSelectModule,
   ],
+
   declarations: [
     HomeComponent,
     IndexComponent,
@@ -45,8 +47,8 @@ import { ResetComponent } from './reset_password/reset.component';
     TermsandconditionComponent,
     NDAComponent,
     ContractComponent,
-    // CommonSigninModalComponent,
   ],
-  //   entryComponents: [CommonSigninModalComponent],
+
+  // import { CommonSigninModalComponent } from './common-signin-modal/common-signin-modal.component';
 })
 export class HomeModule {}

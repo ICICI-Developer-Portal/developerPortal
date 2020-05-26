@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-documentation-dashb',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   //styleUrls: ['./documentation-dashb.component.css']
 })
 export class DocumentationDashbComponent implements OnInit {
-
-  constructor() { }
+  showSidebar: boolean;
+  constructor(private router: Router) {}
 
   ngOnInit() {
-  }
+    var url = this.router.url;
+    console.log(url);
 
+    if (url !== '/appathon-dashboard') {
+      this.showSidebar = true;
+    }
+  }
 }
